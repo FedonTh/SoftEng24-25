@@ -1,0 +1,111 @@
+public class DeliverScreen {
+  private String return_store;
+  private Date return_date;
+  private int car_id;
+  private int customer_id;
+
+  public void display() {
+  //ui code
+  }
+
+  public boolean confirm() {
+    private boolean confirm = 0;
+    if(user has confirmed)
+    confirm = 1;
+    return confirm;
+  }
+}
+
+public class ManageDeliveryScreens {
+  private boolean confirm;
+
+}
+
+public class DeliveryUpdateScreen {
+
+  public void display() {
+  //ui code
+  }
+}
+
+public class ManageCarStatusScreen {
+  private String CarStatusDetails;
+  private String history;
+
+  public int CalculateCost(Cost,History) {
+    int FinalCost = Cost - History;
+    return FinalCost;
+  }
+}
+
+public class CarStatusScreen {
+  private String status;
+  private int est_time;
+
+  public void display() {
+  //ui code
+  }
+  public String submit() {
+  //submit code
+  return CarStatusDetails;
+  }
+}
+
+public class ManagePaymentScreens {
+
+  public void startPayment(int amount) {
+  //payment code
+  }
+  public boolean paymentComplete() {
+  //payment check code
+  }  
+}
+
+public class PaymentScreen {
+  private int amount;
+  private String Customer;
+  private String type;
+
+  public void display(amount) {
+  //ui code
+  }
+  public void confirm() {
+  //confirm code
+  }
+}
+
+public class ExternalPaymentScreen {
+  private int amount;
+  private String Customer;
+  private String type;
+  private int payment_id;
+
+  public void display(amount, Customer) {
+    //External API usage
+  }
+  public int complete() {
+    //complete payment code
+    return payment_id;
+  }
+}
+
+public class ContractCompletionScreen {
+  private int customer_id;
+  private int contract_id;
+  private Date expiration_date;
+  private Date contract_date;
+
+  public void display() {
+  //ui code
+  }
+}
+
+public class PaymentFailedScreen {
+  private int amount;
+  private int fail_id;
+
+  public int display() {
+  //Ui code
+  return fail_id;
+  }
+}
