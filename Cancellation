@@ -228,80 +228,51 @@ public class Cancellation {
 
      
 
-  public Cancellation(int cancellationId, String cancellationReason) { 
-
-   this.cancellationId = cancellationId; 
-
-   this.cancellationDate = LocalDateTime.now();
-
-   this.cancellationReason = cancellationReason; 
-
-   this.refundAmount = 0.0;   
-
-   this.penaltyApplied = false; 
+public Cancellation(int cancellationId, String cancellationReason) {
+        this.cancellationId = cancellationId;
+        this.cancellationDate = LocalDateTime.now();
+        this.cancellationReason = cancellationReason;
+        this.refundAmount = 0.0;
+        this.penaltyApplied = false;
 
  } 
 
   
-
-   
-
-    public int getCancellationId() { 
-
-        return cancellationId; 
-
-    } 
-
-  
-
-    public LocalDateTime getCancellationDate() { 
-
-        return cancellationDate; 
-
-    } 
-
-  
-
-    public String getCancellationReason() { 
-
-        return cancellationReason; 
-
-    } 
-
-  
-
+  public int getCancellationId() { 
+return cancellationId; 
+}
+    public LocalDateTime getCancellationDate() {
+return cancellationDate;
+}
+    public String getCancellationReason() {
+return cancellationReason; 
+}
     public double getRefundAmount() { 
-
-        return refundAmount; 
-
-    } 
-
-  
-
+return refundAmount; 
+}
     public boolean isPenaltyApplied() { 
+return penaltyApplied; 
+}
+    } 
+  
 
-        return penaltyApplied; 
+  
+
+public void setCancellationId(int cancellationId) {
+        this.cancellationId = cancellationId;
 
     } 
 
   
 
-  
-
-    public void setRefundAmount(double refundAmount) { 
-
-        this.refundAmount = refundAmount; 
+    public void setRefundAmount(double refundAmount) {
+        this.refundAmount = refundAmount;
+//System.out.println
 
     } 
-
-  
-
-    public void setPenaltyApplied(boolean penaltyApplied) { 
-
-        this.penaltyApplied = penaltyApplied; 
-
-    } 
-
+public void setPenaltyApplied(boolean penaltyApplied) {
+        this.penaltyApplied = penaltyApplied;
+//System.out.println
   
 
 
@@ -310,17 +281,10 @@ public double calculateRefund(double originalCost,CancellationPolicy policy, int
 
 // Χρειάζεται CancellationPolicy 
 
- 
+public double applyPenalty(double originalCost, CancellationPolicy policy, long remainingHours) { 
 
 //
 
-    } 
-
-  
-
-public double applyPenalty(double originalCost, CancellationPolicy policy) { 
-
-// 
 
     } 
 
@@ -330,39 +294,33 @@ public double applyPenalty(double originalCost, CancellationPolicy policy) {
 
  public class CancellationPolicy { 
 
-    private int policyId;    
-    private String policyName;     
+     private int policyId;
+    private String policyName;
     private String ruleSetDescription; 
 
 
 public CancellationPolicy(int policyId, String policyName, String ruleSetDescription) { 
 
-        this.policyId = policyId; 
-
-        this.policyName = policyName; 
-
-        this.ruleSetDescription = ruleSetDescription; 
+this.policyId = policyId; 
+this.policyName = policyName; 
+this.ruleSetDescription = ruleSetDescription; 
 
     } 
 
 
     public int getPolicyId() { 
 
-        return policyId; 
+      return policyId; 
 
     } 
 
-  
-
-    public String getPolicyName() { 
+   public String getPolicyName() { 
 
         return policyName; 
 
     } 
 
-  
-
-    public String getRuleSetDescription() { 
+   public String getRuleSetDescription() { 
 
         return ruleSetDescription; 
 
@@ -370,48 +328,38 @@ public CancellationPolicy(int policyId, String policyName, String ruleSetDescrip
 
 
 
-public double getPenaltyPercentage(int remainingHours) { 
+    public void setPolicyId(int policyId) {
+        this.policyId = policyId;
 
       //
     } 
 
   
-
 public double calculatePenalty(double originalCost, int remainingHours) { 
 
 //
-
+return penaltyAmount;
     }} 
 
   
 
 public class Payment {   
 
-private int paymentId;         
-private int bookingId;            
-
-private double amount;      
-
-private String paymentType;    
-
-private LocalDateTime transactionDate; 
-
-private String status;         
+    private int paymentId;
+    private int bookingId;
+    private double amount;
+    private String paymentType;
+    private LocalDateTime transactionDate;
+    private String status;         
 
    
 
-public Payment(int paymentId, int bookingId, double amount, String paymentType) { 
-
-        this.paymentId = paymentId; 
-
-        this.bookingId = bookingId; 
-
-        this.amount = amount; 
-
-        this.paymentType = paymentType; 
-
-        this.transactionDate = LocalDateTime.now(); 
-
+public Payment(int paymentId, int bookingId, double amount, String paymentType) {
+        this.paymentId = paymentId;
+        this.bookingId = bookingId;
+        this.amount = amount;
+        this.paymentType = paymentType;
+        this.transactionDate = LocalDateTime.now();
         this.status = "Pending";
 
     } 
@@ -462,6 +410,9 @@ public Payment(int paymentId, int bookingId, double amount, String paymentType) 
         return status; 
 
     } 
+public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
+}
 
     public void setStatus(String status) { 
 
@@ -473,6 +424,7 @@ public Payment(int paymentId, int bookingId, double amount, String paymentType) 
 public boolean processPayment() { 
 
 //
+//return true; ;h false;
     } 
 
   
@@ -480,7 +432,7 @@ public boolean processPayment() {
 public boolean processRefund(double refundAmount) { 
 
 //
-
+//return true; ;h false;
     } 
 
 } 
