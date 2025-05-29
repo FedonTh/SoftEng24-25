@@ -1,0 +1,132 @@
+public class MainScreen {
+
+     public void Edit_Kratisi()
+      {
+      }
+
+
+} //End of  MainScreen
+
+
+
+public class BookingScreen {
+
+     public void display()
+    {
+    }
+
+    public chooses_kratisi_and_submit()
+     {     
+     }
+
+    public chooses_changes_and_submit()
+    {
+    }
+ 
+     public send_results(String kratisi) 
+      {
+      }
+
+}  // End of BookingScreen
+
+public class EditBookingScreen {
+
+     public void display()
+    {
+    }
+
+     public chooses_changes_and_submit()
+    {
+    }
+
+} // End of Edit Booking Screen
+
+public class Manage Search {
+
+       public void ask_for_kratiseis()
+     {
+     }
+
+     public send_changes()
+    {
+    }
+
+} // End of Manage Search
+
+
+Public class ConfirmScreen{
+
+      public void display()
+      {
+       }
+
+       public final_submit()
+       {
+       }
+
+
+    public void show_message(String message)
+    {
+    }  
+
+
+} // End of Confirmation Screen
+
+
+public class PaymentScreen{
+
+       public void display()
+    {
+    }
+
+     public double return_cost()
+     {
+     }
+
+    public void payment()
+    {
+    }
+
+    public void close message()
+    {
+    }
+
+    public void show_message(String message)
+    {
+    }
+  
+
+ 
+} // end of PaymentScreen
+
+public class Invalid Booking Screen {
+
+     public void display()
+    {
+    }
+
+     public void show_message(String message)
+     {
+     }
+
+    public void close_message()
+   {
+   }
+
+
+} // End of InvalidBookingScreen
+
+public class ExternalPaymentScreen{
+
+      public void display()
+     {
+     }
+
+      public void confirm()
+    {
+    }
+
+} //end of ExternalPaymentScreen
+
+ 
+
