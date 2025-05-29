@@ -39,9 +39,12 @@ public class EditBookingScreen {
     {
     }
 
+    
+
+
 } // End of Edit Booking Screen
 
-public class Manage Search {
+public class ManageSearch {
 
        public void ask_for_kratiseis()
      {
@@ -50,6 +53,11 @@ public class Manage Search {
      public send_changes()
     {
     }
+
+
+    public void send_results()
+      {
+      }
 
 } // End of Manage Search
 
