@@ -5,6 +5,13 @@ public class MainScreen {
 
        public void Edit_Profile()
        {
+// Create a new JFrame as the edit profile screen
+        JFrame editFrame = new JFrame("Edit Profile");
+
+        // Optional: Add something to the new screen (e.g., a label)
+        JLabel label = new JLabel("Edit Profile Screen ");
+        editFrame.add(label);
+ 
        }
 
  } //End of MainScreen
@@ -12,84 +19,254 @@ public class MainScreen {
 
 public class EditProfileScreen{
 
+ private String username = "DefaultUser";
+    private String password = "1234";
+    private String location = "Unknown";
+
+private JFrame frame;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+    private JTextField locationField;
+
+
      public void display()
     {
+
+        frame = new JFrame("Edit Profile Screen");
+
     }
 
         public void Show_message(String message)
       {
+
+       JOptionPane.showMessageDialog(null, "Successful change");
+
       }
 
         public void Edit_username(String newUsername)
        {
+            public void Edit_username(String newUsername) {
+        JFrame frame = new JFrame("Edit Username");
+        frame.add(new JLabel("Username Edit Screen"));
+        setupFrame(frame);
+
        }
 
 
       public void Edit_password(String newPassword)
       {
+ JFrame frame = new JFrame("Edit Password");
+        frame.add(new JLabel("Password Edit Screen"));
+        setupFrame(frame);
       }
 
       public void Edit_location(String newLocation)
      {
+ JFrame frame = new JFrame("Edit Location");
+         frame.add(new JLabel(" Result Screen"));
+        setupFrame(frame);
      }
 
-     } // End of Edit Profile Screen
+  } // End of Edit Profile Screen
+
+
+
+
+
+
+
+
+
+
+
+
 
 public class UsernameEditScreen {
 
      public void display()
      {
+  JFrame frame = new JFrame("Username Edit Screen");
+        JLabel label = new JLabel("This is the Username Edit Screen");
+        frame.add(label);
      }
 
        public void write_new_username_and_submit()
         {
+ JFrame frame = new JFrame("Change Username");
+
+        JLabel label = new JLabel("Enter new username:");
+        JTextField usernameField = new JTextField(15);
+        JButton submitButton = new JButton("Submit");
+
+        submitButton.addActionListener(e -> {
+            String newUsername = usernameField.getText();
+            // You now have the new username stored in newUsername
+            // Nothing else happens — just captures the input
+        });
+
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(usernameField);
+        panel.add(submitButton);
+
+        frame.add(panel);
+        frame.setSize(300, 150);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
 
-    }// end of Username Edit Screen
+ 
+}// end of Username Edit Screen
+
+
+
+
+
+
+
+
+
+
 
 public class Password Edit Screen{
 
         public void display()
       {
+JFrame frame = new JFrame("Password Edit Screen");
+        JLabel label = new JLabel("Password Edit Screen");
+        frame.add(label);
       }
 
-     public void write_new_password_and_submit()
-       {
-       }
+    public void write_new_password_and_submit() {
+        JFrame frame = new JFrame("Change Password");
 
+        JLabel label = new JLabel("Enter new password:");
+        JPasswordField passwordField = new JPasswordField(15);
+        JButton submitButton = new JButton("Submit");
+
+        submitButton.addActionListener(e -> {
+            String newPassword = new String(passwordField.getPassword());
+           
+        });
+
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(passwordField);
+        panel.add(submitButton);
+
+        frame.add(panel);
+        frame.setSize(300, 150);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
+       
   } // end of Password Edit Screen
  
- 
+
+
+
+
+
 
 public class ResultScreen{
 
      public void display()
     { 
+  JFrame frame = new JFrame("Result Screen");
+        JLabel label = new JLabel("This is the Result Screen");
+        frame.add(label);
+
+        frame.setSize(300, 150);
+        frame.setLocationRelativeTo(null); // Center on screen
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public List<String> return_locations()
     {
+       //needs filling
     }
 
    public String choose_location_and_submit() 
    {
+ List<String> locations = return_locations();
+
+        // Show a dialog with a dropdown to choose one location
+        String selected = (String) JOptionPane.showInputDialog(
+                null,
+                "Choose a location:",
+                "Location Selection",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                locations.toArray(),
+                locations.get(0)
+        );
+
+        return selected; // This will be null if user cancels
    } 
 
  } // End of Result Screen
+
+
+
+
+
+
+
+
+
 
 
 public class InvalidCheckScreen{
 
       public void display() 
        {
+        frame = new JFrame("Invalid Check Screen");
+        JLabel label = new JLabel("Invalid Check Screen");
+        frame.add(label);
+
+        frame.setSize(300, 150);
+        frame.setLocationRelativeTo(null); // Center on screen
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
        }
   
-       public void  Show_message(String message)
+       public void  Show_message1(String message)
        {
+ JOptionPane.showMessageDialog(null, "Password already in use", "Error", JOptionPane.ERROR_MESSAGE);
        }
+
+  public void  Show_message2(String message)
+       {
+ JOptionPane.showMessageDialog(null, "Username already in use", "Error", JOptionPane.ERROR_MESSAGE);
+       }
+
 
        public void close_message()
        {
+ messageDialog = new JDialog(frame, "Close Message", true); // modal dialog
+
+        JLabel msgLabel = new JLabel("Click the button to close this message.");
+        msgLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        JButton closeButton = new JButton("Close");
+        closeButton.addActionListener(e -> messageDialog.dispose());
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(msgLabel);
+        panel.add(Box.createVerticalStrut(10));
+        panel.add(closeButton);
+
+        messageDialog.add(panel);
+        messageDialog.setSize(300, 150);
+        messageDialog.setLocationRelativeTo(frame);
+        messageDialog.setVisible(true);
+
        } 
  
     } // End of Invalid Check Screen
