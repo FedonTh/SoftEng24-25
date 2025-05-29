@@ -2,150 +2,93 @@ public class User {
 
    private int userId;          
 private String username; 
-private String passwordHash;  
+private String passwordHash; 
+private Customer customerProfile;
 private List<Booking> bookings; 
 
-public User(int userId, String username, String passwordHash) { 
-
-        this.userId = userId; 
-
-        this.username = username; 
-
-        this.passwordHash = passwordHash; 
-
-        this.bookings = new ArrayList<>(); 
+public User(int userId, String username, String passwordHash) {
+        this.userId = userId;
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.bookings = new ArrayList<>();
+        this.customerProfile = null; 
 
     } 
 
 
-    public int getUserId() { 
-
-        return userId; 
-
-    } 
-
-  
-
+public int getUserId() { return userId; }
     public String getUsername() { 
-
-        return username; 
-
-    } 
+return username; 
+}
+    public String getPasswordHash() {
+return passwordHash; 
+}
+    public Customer getCustomerProfile() { 
+return customerProfile; 
+}
+    public List<Booking> getBookings() {
+return bookings;
+}
+ } 
 
   
-public boolean authenticate(String username, String password) { 
+public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
-    //
-    } 
-
-  
-
-public Customer getCustomerProfile() { 
-
+    
+    public void setCustomerProfile(Customer customerProfile) {
+        this.customerProfile = customerProfile;
+    }
+   }
+//public boolean authenticate(String username, String password) {
+boolean isAuthenticated = this.username.equals(username) && this.passwordHash.equals(password);
 //
-
-// 
-
- } 
-
-  
-public List<Booking> getBookings() { 
-
- //
- } 
-
-  
-public void addBooking(Booking booking) { 
-
-    System.out.println("User.addBooking() placeholder called."); 
-
-    this.bookings.add(booking); 
-
-  } }
+//
+//return isAuthenticated;
 
  
 
+
 public class Customer { 
 
-    private int customerId;       
-
-    private String email;          
-
-    private String phoneNumber;     
-
-    private int violationCount;     
-    private List<Booking> bookings; 
-
+    private int customerId;
+    private String email;
+    private String phoneNumber;
+    private int violationCount;
+private List<Booking> bookings;
   
 
      
 
-   public Customer(int customerId, String email, String phoneNumber) { 
-
-       this.customerId = customerId; 
-
-       this.email = email; 
-
-       this.phoneNumber = phoneNumber; 
-
-       this.violationCount = 0;
-
-       this.bookings = new ArrayList<>(); 
+   pupublic Customer(int customerId, String email, String phoneNumber) {
+        this.customerId = customerId;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.violationCount = 0;
+        this.bookings = new ArrayList<>(); 
 
     } 
 
   
- public int getCustomerId() { 
-
-        return customerId; 
-
-    } 
-
-  
-
-    public String getEmail() { 
-
-        return email; 
+    public int getCustomerId() { return customerId; }
+    public String getEmail() { return email; }
+    public String getPhoneNumber() { return phoneNumber; }
+    public int getViolationCount() { return violationCount; }
+    public List<Booking> getBookings() { return bookings; }
 
     } 
+public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+public void setViolationCount(int violationCount) {
+        this.violationCount = violationCount;
+    }
 
-  
+  //public void incrementViolationCount() { 
 
-    public String getPhoneNumber() { 
+ //public void addBooking(Booking booking) {
 
-        return phoneNumber; 
-
-    } 
-
-  
-
-    public int getViolationCount() { 
-
-        return violationCount; 
-
-    } 
-
-  //
-
-public void incrementViolationCount() { 
-
-    //
-
-    } 
-
-  
-
-public List<Booking> getBookings() { 
-
-//
-
-    } 
-
-  
-
-public void addBooking(Booking booking) { 
-
-//
 
     } }
 
@@ -155,22 +98,15 @@ public void addBooking(Booking booking) {
 
  public class Booking { 
 
-   
 
-    private int bookingId;      
-
-    private LocalDateTime date;     
-
-    private String vehicleType;    
-    private String pickupLocation;   
-
-    private String dropoffLocation; 
-
-    private String paymentStatus;  
-
-    private double originalCost; 
-
-    private String status;     
+    private int bookingId;
+    private LocalDateTime date;
+    private String vehicleType;
+    private String pickupLocation;
+    private String dropoffLocation;
+    private String paymentStatus; 
+    private double originalCost;
+    private String status    
 
   
 
@@ -207,9 +143,6 @@ public Booking(int bookingId, LocalDateTime date, String vehicleType,String pick
         return bookingId; 
 
     } 
-
-  
-
     public LocalDateTime getDate() { 
 
         return date; 
@@ -266,58 +199,31 @@ public Booking(int bookingId, LocalDateTime date, String vehicleType,String pick
 
   
 
-    
-
-    public void setPaymentStatus(String paymentStatus) { 
-
-        this.paymentStatus = paymentStatus; 
-
-    } 
-
-  
-
-    public void setStatus(String status) { 
-
-        this.status = status; 
-
-    } 
-
-  
-
-  
-
-public int getRemainingTimeInHours() { 
-
+public void setBookingId(int bookingId) {
+        this.bookingId = bookingId;
+    }
+public void setPaymentStatus(String paymentStatus) {
+      //
+public void setStatus(String status) {
+     //
+  //
+public boolean cancel(Cancellation cancellationDetails) {
 //
     } 
-
-  
-
-   public boolean cancel(Cancellation cancellationDetails) {  
-
-// Χρειάζεται η κλάση Cancellation 
-
-  //
+////
 
  
 
-    } 
-
-}
+  
 
 public class Cancellation { 
 
    
-private int cancellationId; 
-
-private LocalDateTime cancellationDate;  
-
-private String cancellationReason;  
-
-private double refundAmount;      
-
-private boolean penaltyApplied; 
-
+    private int cancellationId;
+    private LocalDateTime cancellationDate;
+    private String cancellationReason;
+    private double refundAmount;
+    private boolean penaltyApplied;
   
 
      
