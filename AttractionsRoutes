@@ -1,0 +1,391 @@
+public class Attraction { 
+
+
+    private int attractionId;      
+
+    private String name;        
+
+    private String description;   
+
+    private String location;        
+
+    private double rating;         
+
+  
+
+   
+
+ public Attraction(int attractionId, String name, String description, String location, double rating) { 
+
+        this.attractionId = attractionId; 
+
+        this.name = name; 
+
+        this.description = description; 
+
+        this.location = location; 
+
+        this.rating = rating; 
+
+    } 
+
+  
+
+    
+
+    public int getAttractionId() { 
+
+        return attractionId; 
+
+    } 
+
+  public String getName() { 
+
+        return name; 
+
+    } 
+
+ public String getDescription() { 
+
+        return description; 
+
+    } 
+
+ public String getLocation() { 
+
+        return location; 
+
+    } 
+
+  public double getRating() 
+
+ { 
+
+        return rating; 
+
+    } 
+
+ 
+ public void displayDetails() { 
+
+        //
+
+    } }
+ 
+
+ 
+
+public class Route { 
+
+     
+
+    private int routeId;                                              
+
+    private String name;                                          
+
+    private String description;                                 
+
+    private double estimatedDurationHours;   
+
+    private double cost;                                               
+
+    private String difficultyLevel;                             
+
+    private List<Attraction> attractions; 
+
+
+public Route(int routeId, String name, String description, double estimatedDurationHours, double cost, String difficultyLevel) { 
+
+        this.routeId = routeId; 
+
+        this.name = name; 
+
+        this.description = description; 
+
+        this.estimatedDurationHours = estimatedDurationHours; 
+
+        this.cost = cost; 
+
+        this.difficultyLevel = difficultyLevel; 
+
+        this.attractions = new ArrayList<>(); 
+
+    } 
+
+
+
+    public int getRouteId() { 
+
+        return routeId; 
+
+    } 
+
+  
+
+    public String getName() { 
+
+        return name; 
+
+    } 
+
+  
+
+    public String getDescription() { 
+
+        return description; 
+
+    } 
+
+  
+
+    public double getEstimatedDurationHours() { 
+
+        return estimatedDurationHours; 
+
+    } 
+
+  
+
+    public double getCost() { 
+
+        return cost; 
+
+    } 
+
+  
+
+    public String getDifficultyLevel() { 
+
+        return difficultyLevel; 
+
+    } 
+
+  
+
+    public List<Attraction> getAttractions() { 
+
+        return attractions; 
+
+    } 
+
+
+    public void addAttraction(Attraction attraction) { 
+
+       //
+
+    } 
+
+  
+
+    public void displayRouteDetails() { 
+
+      //
+
+    } } 
+
+ 
+
+ public class PickupPoint { 
+
+     
+
+    private int pointId;        
+
+    private String name;         
+
+    private String address;    
+
+    private String city;     
+
+  
+ 
+
+    public PickupPoint(int pointId, String name, String address, String city) { 
+
+        this.pointId = pointId; 
+
+        this.name = name; 
+
+        this.address = address; 
+
+        this.city = city; 
+
+    } 
+
+  
+
+    public int getPointId() { 
+
+        return pointId; 
+
+    } 
+
+  
+
+    public String getName() { 
+
+        return name; 
+
+    } 
+
+  
+
+    public String getAddress() { 
+
+        return address; 
+
+    } 
+
+  
+
+    public String getCity() { 
+
+        return city; 
+
+    } 
+
+    public void displayPickupPointDetails() { 
+
+      // 
+
+    } }  
+
+ 
+
+ 
+
+public class HotelOption { 
+
+    
+
+    private int hotelId;                             
+
+    private String name;                        
+
+    private String address;                    
+
+    private double pricePerNight;      
+
+    private double rating;                        
+
+  
+
+   
+
+public HotelOption(int hotelId, String name, String address, double pricePerNight, double rating) { 
+
+        this.hotelId = hotelId; 
+
+        this.name = name; 
+
+        this.address = address; 
+
+        this.pricePerNight = pricePerNight; 
+
+        this.rating = rating; 
+
+    } 
+
+
+
+    public int getHotelId() { 
+
+        return hotelId; 
+
+    } 
+
+  
+
+    public String getName() { 
+
+        return name; 
+
+    } 
+
+  
+
+    public String getAddress() { 
+
+        return address; 
+
+    } 
+
+  
+
+    public double getPricePerNight() { 
+
+        return pricePerNight; 
+
+    } 
+
+  
+
+    public double getRating() { 
+
+        return rating; 
+
+    } 
+
+  
+
+  //α 
+
+    public void displayHotelDetails() { 
+//
+    }} 
+
+  
+
+public class ProfileAnalyzer { 
+
+    private int analyzerId; 
+
+    private String algorithmName;  
+
+    private String lastRunDate;   
+
+  
+
+    
+
+    public ProfileAnalyzer(int analyzerId, String algorithmName) { 
+
+        this.analyzerId = analyzerId; 
+
+        this.algorithmName = algorithmName; 
+
+        this.lastRunDate = "N/A"; 
+
+    } 
+
+    public int getAnalyzerId() { return analyzerId; } 
+
+    public String getAlgorithmName() { return algorithmName; } 
+
+    public String getLastRunDate() { return lastRunDate; } 
+
+
+
+    public void setLastRunDate(String lastRunDate) { 
+
+        this.lastRunDate = lastRunDate; 
+
+    } 
+
+   // 
+
+public List<Route> analyzeUserPreferences(User user) {   
+// Θα χρειαστεί User, Route 
+// 
+
+    } 
+
+  
+
+public void generateRecommendations(List<Attraction> allAttractions, List<Route> allRoutes) {     // Θα χρειαστεί Attraction, Route 
+
+System.out.println("ProfileAnalyzer.generateRecommendations() placeholder called."); 
+
+    } 
+
+} 
