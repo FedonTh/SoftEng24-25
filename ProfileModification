@@ -1,0 +1,95 @@
+// Τροποποίηση Προφίλ 
+
+
+public class MainScreen {
+
+       public void Edit_Profile()
+       {
+       }
+
+ } //End of MainScreen
+
+
+public class EditProfileScreen{
+
+     public void display()
+    {
+    }
+
+        public void Show_message(String message)
+      {
+      }
+
+        public void Edit_username(String newUsername)
+       {
+       }
+
+
+      public void Edit_password(String newPassword)
+      {
+      }
+
+      public void Edit_location(String newLocation)
+     {
+     }
+
+     } // End of Edit Profile Screen
+
+public class UsernameEditScreen {
+
+     public void display()
+     {
+     }
+
+       public void write_new_username_and_submit()
+        {
+        }
+
+    }// end of Username Edit Screen
+
+public class Password Edit Screen{
+
+        public void display()
+      {
+      }
+
+     public void write_new_password_and_submit()
+       {
+       }
+
+  } // end of Password Edit Screen
+ 
+ 
+
+public class ResultScreen{
+
+     public void display()
+    { 
+    }
+
+    public List<String> return_locations()
+    {
+    }
+
+   public String choose_location_and_submit() 
+   {
+   } 
+
+ } // End of Result Screen
+
+
+public class InvalidCheckScreen{
+
+      public void display() 
+       {
+       }
+  
+       public void  Show_message(String message)
+       {
+       }
+
+       public void close_message()
+       {
+       } 
+ 
+    } // End of Invalid Check Screen
