@@ -147,154 +147,109 @@ public void displayRouteDetails() {
 
  
 
- public class PickupPoint { 
-
-     
-
-    private int pointId;        
-
-    private String name;         
-
-    private String address;    
-
-    private String city;     
+ 
+public class PickupPoint {
+    private int pointId;
+    private String name;
+    private String address;
+    private String city;    
 
   
  
 
-    public PickupPoint(int pointId, String name, String address, String city) { 
-
-        this.pointId = pointId; 
-
-        this.name = name; 
-
-        this.address = address; 
-
-        this.city = city; 
+public PickupPoint(int pointId, String name, String address, String city) {
+        this.pointId = pointId;
+        this.name = name;
+        this.address = address;
+        this.city = city;
 
     } 
 
   
 
-    public int getPointId() { 
-
-        return pointId; 
-
+public int getPointId() { 
+return pointId; 
+}
+public String getName() {
+return name; 
+}
+public String getAddress() { 
+return address; 
+}
+public String getCity() { 
+return city; 
+}
+ 
+public void setPointId(int pointId) {
+        this.pointId = pointId;
     } 
-
-  
-
-    public String getName() { 
-
-        return name; 
-
-    } 
-
-  
-
-    public String getAddress() { 
-
-        return address; 
-
-    } 
-
-  
-
-    public String getCity() { 
-
-        return city; 
-
-    } 
-
-    public void displayPickupPointDetails() { 
-
-      // 
-
-    } }  
-
+public void setName(String name) { 
+this.name = name; 
+}
+public void setAddress(String address) { 
+this.address = address; 
+}
+public void setCity(String city) { 
+this.city = city;
+}
+public void displayPointDetails() {
+//
  
 
  
+public class HotelOption {
+    private int hotelId;
+    private String name;
+    private String address;
+    private double pricePerNight;
+    private double rating;
+                          
+public HotelOption(int hotelId, String name, String address, double pricePerNight, double rating, ExternalTravelService externalService) {
+        this.hotelId = hotelId;
+        this.name = name;
+        this.address = address;
+        this.pricePerNight = pricePerNight;
+        this.rating = rating;
+        
+    } 
 
-public class HotelOption { 
 
+
+public int getHotelId() { 
+return hotelId;
+}
+public String getName() { 
+return name; 
+}
+public String getAddress() { 
+return address;
+}
+public double getPricePerNight() { 
+return pricePerNight; 
+}
+public double getRating() { 
+return rating;
+}
+public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
+public void setName(String name) { 
+this.name = name; 
+}
+public void setAddress(String address) { 
+this.address = address; 
+}
+public void setPricePerNight(double pricePerNight) { 
+this.pricePerNight = pricePerNight; 
+}
+public void setRating(double rating) {
+this.rating = rating; 
+}
     
 
-    private int hotelId;                             
-
-    private String name;                        
-
-    private String address;                    
-
-    private double pricePerNight;      
-
-    private double rating;                        
-
-  
-
-   
-
-public HotelOption(int hotelId, String name, String address, double pricePerNight, double rating) { 
-
-        this.hotelId = hotelId; 
-
-        this.name = name; 
-
-        this.address = address; 
-
-        this.pricePerNight = pricePerNight; 
-
-        this.rating = rating; 
-
-    } 
-
-
-
-    public int getHotelId() { 
-
-        return hotelId; 
-
-    } 
-
-  
-
-    public String getName() { 
-
-        return name; 
-
-    } 
-
-  
-
-    public String getAddress() { 
-
-        return address; 
-
-    } 
-
-  
-
-    public double getPricePerNight() { 
-
-        return pricePerNight; 
-
-    } 
-
-  
-
-    public double getRating() { 
-
-        return rating; 
-
-    } 
-
-  
-
-  //α 
-
-    public void displayHotelDetails() { 
-//
-    }} 
+   public void displayHotelDetails() {
+        //
+}
+}
 
   
 
@@ -316,37 +271,30 @@ public class ProfileAnalyzer {
 
         this.algorithmName = algorithmName; 
 
-        this.lastRunDate = "N/A"; 
+        this.lastRunDate = null;; 
 
     } 
 
-    public int getAnalyzerId() { return analyzerId; } 
+public int getAnalyzerId() { 
+return analyzerId;
+} 
 
-    public String getAlgorithmName() { return algorithmName; } 
+public String getAlgorithmName() { 
+return algorithmName; 
+} 
 
-    public String getLastRunDate() { return lastRunDate; } 
+public String getLastRunDate() {
+return lastRunDate; 
+} 
 
-
-
-    public void setLastRunDate(String lastRunDate) { 
-
-        this.lastRunDate = lastRunDate; 
-
-    } 
-
-   // 
-
-public List<Route> analyzeUserPreferences(User user) {   
-// Θα χρειαστεί User, Route 
-// 
+public void setAnalyzerId(int analyzerId) {
+        this.analyzerId = analyzerId; 
 
     } 
-
-  
-
-public void generateRecommendations(List<Attraction> allAttractions, List<Route> allRoutes) {     // Θα χρειαστεί Attraction, Route 
-
-System.out.println("ProfileAnalyzer.generateRecommendations() placeholder called."); 
+public void setAlgorithmName(String algorithmName) { this.algorithmName = algorithmName; }
+public void setLastRunDate(LocalDateTime lastRunDate) { this.lastRunDate = lastRunDate; }
+public void analyze(User user) {
+//
 
     } 
 
