@@ -1,0 +1,205 @@
+public class ReturnScreen {
+  private int id;
+  private int days_left;
+
+  public void display() {
+  //code for ui elements
+  }
+  public void showReturn(date) {
+    display();
+    System.out.println("Your return date is:" + date);
+    System.out.println("Your remaining days are:" + days_left);
+    }
+    
+  public boolean return() {
+    boolean confirm = 0;
+    if(user presses confirm button)
+      confirm = 1;
+    
+    return confirm;
+    }
+ }
+  
+public class ManageReturn {
+  private Date date;
+  private boolean confirm;
+  private int availability;
+  private int contract_id;
+  
+  private ReturnScreen returnS;
+  private DataSourceManager DSM;
+  private ReturnDateScreen returnDS
+
+  public ManageScreen(ReturnScreen returnS){
+    this.returnS = returnS;
+    this.DSM = new DataSourceManager();
+  }
+  private CheckDate(int contract_id){
+    date = DSM.queryReturnDate(contract_id);  
+    if(date > currentdate){
+      returnS.showReturn(date);
+    }
+    if(!DSM.CheckAvailability(returnDS.getdate(), returnDS.getcarid())){ //if car or date not available
+      NoAvailabilityScreen NoAvailScr = new NoAvailabilityScreen();
+      NoAvailScr.display();
+    }
+    ManageEvaluationScreen ManEvalScr = new ManageEvaluationScreen();
+    ManEvalScr.evaluation();
+  }
+}
+
+public class ReturnDateScreen {
+  private Date return_date;
+  private String store;
+
+  public void display() {
+    //display ui 
+  }
+
+  public Date selectDate() {
+    display();
+    Scanner scan = new Scanner(System.in);  
+
+    System.out.println("Select date:");
+    Date date = scan.nextLine(); 
+
+    System.out.println("Select car:");
+    String car_id = scan.nextLine(); 
+    }
+    public Date getdate(){
+      return date;
+    }
+    public String getcarid(){
+      return car_id;
+    }
+  }
+
+  public boolean CheckDateDetails(date) {
+    boolean DateOk = 0;
+    
+    //check validity of date
+    if(date != null && date.valid())
+      DateOk = 1;
+    
+    return DateOk;
+    }
+}
+
+public class NoAvailabilityScreen {
+  private int car_id;
+
+  public display() {
+    //code to display ui
+    System.out.println("This option is unavailable!");
+    System.out.println("Please Try Another");
+    }
+  }
+
+public class EvaluationScreen {
+  private int car_id;
+  private String comment;
+  private int stars;
+
+  public String display() {
+    //code to display ui
+
+    return evaluation;
+    }
+
+  public void submit() {
+    //code
+    }
+}
+
+public class ManagevaluationScreen() {
+  private String evaluation;
+
+
+
+  public void evaluation() {
+    EvaluationScreen EvScr = new EvaluationScreen();
+    evaluation = EvScr.display();
+    if(!CheckEvaluationDetails(evaluation)){
+        InvalidScreen InvScr = new InvalidScreen();
+        InvalidScreen.display();
+    }
+    else
+    {
+      MainScreen MScr = new MainScreen();
+      MScr.display();
+    }    
+  }
+public boolean CheckEvaluationDetails(evaluation) {
+   boolean EvaluationOk = 0;
+    
+    //check validity of evaluation
+    if(validity ok)
+      EvaluationOk = 1;
+    
+    return EvaluationOk;
+    }
+}
+
+public class AlertScreen {
+  private int days_left;
+
+    public void display(){
+    //code for ui elements
+    }
+    public void showDays() {
+      display();
+      System.out.println("Your days remaining are:" + days_left);
+    }
+}
+
+public class DeliverAlertScreen {
+  private int days_passed;
+
+  public void disply() {
+    //code for ui elements
+    }
+}
+
+public class ManageAlertScreens {
+  private int days;
+  private int customer_id
+  private DataSourceManager DSM;
+  private AlertScreen AlScr;
+
+  public ManageAlertScreens() { this.DSM = new DataSourceManager(); }
+  days = DSM.queryDays(customer_id);
+  AlScr.showDays(days);
+  TimeUnit.SECONDS.sleep(259200); //Wait 3 days
+  if(System == inactive){
+    DeliverAlertScreen DAScr = new DeliverAlertScreen();
+    DAScr.display();
+  }
+  TimeUnit.SECONDS.sleep(259200); //Wait 3 more days
+  if(System == inactive){
+    PenaltyScreen PenScr = new PenaltyScreen();
+    PenScr.display(customer_id);
+  }
+}
+
+public class PenaltyScreen {
+  private DataSourceManager DSM;
+  
+  public void PenatlyScreen() {this.DSM = new DataSourceManager();}
+  public void display(int customer_id) {
+     //code for ui elements
+     System.out.println("Due to extended delays, you have been issued penalties");
+     DSM.updatehistory(customer_id); 
+  }
+
+}
+
+public class InvalidScreen {
+  
+  public void display() {
+      System.out.println("The Details are not ok, please try again");
+    }
+
+}
+
+
+    
