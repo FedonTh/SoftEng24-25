@@ -115,7 +115,7 @@ public class AppointmentHandlingClass{
 		
 		confirm = false;
 
-		while((!confirm){
+		while(!confirm){
 
 			system.out.print("Enter date");
 			date = scanner.nextLine();
@@ -139,4 +139,27 @@ public class AppointmentScreen{
   		//ui code
   	}
 	MakeAppointment();
+}
+
+public class DBManager{
+	public void UpdateCarHistory(string car_id){
+
+	}
+
+	public string SearchAvailCars(){
+
+	}
+
+	public void BookCar(string car_id, int customer_id){
+
+	}
+	
+	public boolean ConfirmDatePlace(string date, string time, string place){
+		
+		return answer;
+	}
+	
+	public void store(){
+
+	}
 }
