@@ -1,0 +1,160 @@
+public class DeliverScreen {
+  private String return_store;
+  private Date return_date;
+  private int car_id;
+  private int customer_id;
+
+  public void display() {
+  //code for ui elements for the proper logged in customer
+  if (confirm())    
+  return confirm;
+  }
+
+  public boolean confirm() {
+    private boolean confirm = 0;
+    if(user has confirmed using button)
+    confirm = 1;
+    return confirm;
+  }
+}
+
+public class ManageDeliveryScreens {
+  private boolean confirm;
+  private DeliverScreen DScr;
+  private DeliverUpdateScreen DUScr;
+
+  Manage DeliveryScreens(DeliverScreen DScr){
+    this.DScr = DScr;
+    this.DUScr = DUScr;
+  }
+  if(DScr.display())
+  DUScr.display()
+  ManageCarStatusScreen MCSScr = new ManageCarStatusScreen();
+  MCSScr.start(customer_id);
+}
+
+public class DeliveryUpdateScreen {
+
+  public void display() {
+    //code for ui elements
+    System.out.println("Your delivery has been successful!"); 
+  }
+}
+
+public class ManageCarStatusScreen {
+  private String CarStatusDetails;
+  private String history;
+  private DataSourceManager DSM;
+  private int customer_id;
+  private int cost
+
+  public ManageCarStatusScreen() { this.DSM = new DataSourceManager(); }
+
+  public void start(){
+    CarStatusScreen CSScr = new CarStatusScreen();
+    CarStatusDetails = CSScr.display();
+    History = DSM.checkHistory(customer_id);
+    cost = CalculateCost(Cost, history);
+    ManagePaymentScreens MPScr = new ManagePaymentScreens();
+    MPScr.start(customer_id);
+  }
+  public int CalculateCost(int Cost, String History) {
+    int H = conv(History);
+    int FinalCost = Cost - H;
+    return FinalCost;
+  }
+}
+
+public class CarStatusScreen {
+  private String status;
+  private int est_time;
+
+  Scanner scan = new Scanner(System.in);  
+
+  public void display() {
+  //ui code
+  }
+  public String submit() {
+    System.out.println("Please provide car details:");
+    String CarStatusDetails = scan.nextLine();  
+    if(user presses submit button)
+    return CarStatusDetails;
+  }
+}
+
+public class ManagePaymentScreens {
+  private int customer_id;
+
+  public void start(int customer_id, amount){
+    PaymentScreen PScr = new PaymentScreen();
+    PScr.display(customer_id, amount);
+  }
+  public void startPayment(int customer_id, amount) {
+    ExtrernalPaymentScreen EPScr = new ExtrernalPaymentScreen();
+    EPScr.display();
+  }
+  public boolean paymentComplete(int customer_id, amount) {
+   DSM.registerPayment(customer_id, amount);
+   DSM.updateAvailability(car_id, time);
+   ContractCompletionScreen CCScr = new ContractCompletionScreen();
+   CCScr.display();
+   MainScreen MScr = new MainScreen();
+   MScr.display(); 
+  }  
+}
+
+public class PaymentScreen {
+  private int amount;
+  private String Customer;
+  private String type;
+
+  public void display(amount) {
+    //code for ui elements
+    System.out.println("You are paying:" + amount);
+  }
+  public boolean payment() {
+    int boolean confirm = 0,
+    if(user confirms)
+    confirm = 1;
+  }
+}
+
+public class ExternalPaymentScreen {
+  private int amount;
+  private String Customer;
+  private String type;
+  private int payment_id;
+
+  Random r = new Random();
+
+  public void display(amount, Customer) {
+    //External API usage
+    complete();
+  }
+  public int complete() {
+    int payment_id = r.nextInt(100000);
+    return payment_id;
+  }
+}
+
+public class ContractCompletionScreen {
+  private int customer_id;
+  private int contract_id;
+  private Date expiration_date;
+  private Date contract_date;
+
+  public void display() {
+    //code for ui elements
+    System.out.println("Your order has been completed!");
+  }
+}
+
+public class PaymentFailedScreen {
+  private int amount;
+  private int fail_id;
+
+  public void display(int fail_id) {
+    //code for ui elements
+    System.out.println("Payment has failed:" + fail_id);
+   }
+}
