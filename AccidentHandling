@@ -6,10 +6,15 @@ public class StartScreen{
 public class ProblemHandlingClass{
 	private string location;
 	private int customer_id; 
-	private boolean move;
-	private string problem_drscription;
-	public boolean replacement;	
-	public boolean continue;
+	private string problem_description;
+	private boolean continue;
+	private boolean replacement;
+	private boolean cancel;
+	
+	public boolean move_flag=1;
+	public boolean replacement_flag=0;	
+	public boolean continue_flag = 0;
+	public boolean cancel_flag = 0;
 
 	public void AskProblemInfo(){
 		system.out.print("Can your car move");
@@ -23,16 +28,115 @@ public class ProblemHandlingClass{
 		problem_description = scanner.nextLine();
 	}
 
-	public void replacement(){
-		system.out.print("Do you want to continue the use?");
-		replacement  = scanner.nextLine();
+	public void continueORreplacement(){
 		system.out.print("Do you want a new car?");
+		replacement = scanner.nextLine();
+		if(replacement){
+			replacement_flag=1;
+		}
+
+		system.out.print("Do you want to cancel the use?");	
+		cancel  = scanner.nextLine();
+		if (cancel){
+			cancel_flag =1;
+			cancel();		// in cancel use case
+		}
+		if(!cancel && !replacement){
+			continue_flag=1;
+			// assume that the user will continue with the same car
+		}	
 	}
 
 	public void CarsToBeRepaired(){
 		for(int i=0; i<total_cars; i++){
 			if(CarsToBeRepairedList[i]==0)
 				CarsToBeRepairedList[i] = car_id;
-		}
+		}	
 	}
+}
+
+public class ReportProblemScreen{
+
+	public void display() {
+  		//ui code
+  	}
+
+	AskProblemInfo();
+	continueORreplacement();
+}
+
+
+public class CarReplacementClass{
+	private string old_car;
+	private string new_car;
+	private int customer_id;
+
+	private boolean select=0;
+
+	public CarReplacementClass {
+		this.old_car= current_car; 	// from user profile
+	}
+	public string CarSelection(){
+		for(int i=0; i<total_cars; i++){
+			display(available_cars[i]);
+			if(select==1){
+				new_car=available_cars[i];
+				book(available_cars[i]);	// use case με κράτηση και ενοικίαση
+				break;
+
+			}
+		}
+		return new_car;
+	}
+}
+
+public class ReplacementScreen{
+	private string car_id;
+	private int customer_id; 
+	
+	public void display() {
+  		//ui code
+  	}
+
+	CarSelection();
+}
+public class AppointmentHandlingClass{
+	private string date;
+	private string time;
+	private string place;
+	
+	private boolean answer; 
+	private string old_car;
+	private string new_car;
+	
+	private boolean confirm;
+
+	public string MakeAppointment(){
+		
+		confirm = false;
+
+		while((!confirm){
+
+			system.out.print("Enter date");
+			date = scanner.nextLine();
+		
+			system.out.print("Enter time");
+			time = scanner.nextLine();
+
+			system.out.print("enter store");
+			place = scanner.nextLine();
+
+			confirm = CheckDatePlace(date, time, place);
+	 	}
+
+		return appointment;
+	}
+
+}
+public class AppointmentScreen{
+
+	public void display() {
+  		//ui code
+  	}
+	MakeAppointment();
 }
