@@ -45,3 +45,37 @@ CREATE TABLE cancellations (
     penalty_applied BOOLEAN DEFAULT FALSE,
     CONSTRAINT fk_cancellation_booking FOREIGN KEY (booking_id) REFERENCES bookings(booking_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+DROP TABLE IF EXISTS cancellation_policies;
+CREATE TABLE cancellation_policies (
+    policy_id INT PRIMARY KEY AUTO_INCREMENT,
+    policy_name VARCHAR(100) NOT NULL UNIQUE,
+    rule_set_description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+DROP TABLE IF EXISTS payments;
+CREATE TABLE payments (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    booking_id INT, -- Can be NULL if it's a standalone payment/refund not directly tied to a booking at creation
+    amount DECIMAL(10, 2) NOT NULL,
+    payment_type VARCHAR(50), -- e.g., 'Credit Card', 'PayPal', 'Refund'
+    transaction_date DATETIME NOT NULL,
+    status ENUM('Pending', 'Paid', 'Refunded', 'Failed') DEFAULT 'Pending',
+    CONSTRAINT fk_payment_booking FOREIGN KEY (booking_id) REFERENCES bookings(booking_id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+DROP TABLE IF EXISTS attractions;
+CREATE TABLE attractions (
+    attraction_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    location VARCHAR(255),
+    rating DECIMAL(2, 1) -- e.g., 4.5
+);
+DROP TABLE IF EXISTS routes;
+CREATE TABLE routes (
+    route_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    estimated_duration_hours DECIMAL(5, 2),
+    cost DECIMAL(10, 2),
+    difficulty_level ENUM('Easy', 'Medium', 'Hard')
+);
