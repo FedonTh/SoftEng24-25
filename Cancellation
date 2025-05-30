@@ -436,6 +436,19 @@ public boolean processRefund(double refundAmount) {
     } 
 
 } 
+public class System {
+private DatabaseManager dbManager; // gia bd
+public System() {
+this.dbManager = new DatabaseManager();
+//
+public User authenticateUser(String username, String password) {
+//isos return user;
+public boolean cancelBooking(int userId, int bookingId) {
+//
+//return true /false;
+public String displayCancellationConfirmation(Booking booking, Cancellation cancellation) {
+//kapoio message
+return message;}
 
  
 
