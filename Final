@@ -1,0 +1,2403 @@
+public class StartScreen{
+	public void ProblemButton();
+	public void display();
+}
+
+public class ProblemHandlingClass{
+	private string location;
+	private int customer_id; 
+	private string problem_description;
+	private boolean continue;
+	private boolean replacement;
+	private boolean cancel;
+	
+	public boolean move_flag=1;
+	public boolean replacement_flag=0;	
+	public boolean continue_flag = 0;
+	public boolean cancel_flag = 0;
+
+	public void AskProblemInfo(){
+		system.out.print("Can your car move");
+		move = scanner.nextLine();
+		if(!move){
+			system.out.print("Enter your location");	
+			location = scanner.nextLine();
+			RoadsideAssistance(location);	// external function	
+		}
+		system.out.print("Give Problem Description");
+		problem_description = scanner.nextLine();
+	}
+
+	public void continueORreplacement(){
+		system.out.print("Do you want a new car?");
+		replacement = scanner.nextLine();
+		if(replacement){
+			replacement_flag=1;
+		}
+
+		system.out.print("Do you want to cancel the use?");	
+		cancel  = scanner.nextLine();
+		if (cancel){
+			cancel_flag =1;
+			cancel();		// in cancel use case
+		}
+		if(!cancel && !replacement){
+			continue_flag=1;
+			// assume that the user will continue with the same car
+		}	
+	}
+
+	public void CarsToBeRepaired(){
+		for(int i=0; i<total_cars; i++){
+			if(CarsToBeRepairedList[i]==0)
+				CarsToBeRepairedList[i] = car_id;
+		}	
+	}
+}
+
+public class ReportProblemScreen{
+
+	public void display() {
+  		//ui code
+  	}
+
+	AskProblemInfo();
+	continueORreplacement();
+}
+
+
+public class CarReplacementClass{
+	private string old_car;
+	private string new_car;
+	private int customer_id;
+
+	private boolean select=0;
+
+	public CarReplacementClass {
+		this.old_car= current_car; 	// from user profile
+	}
+	public string CarSelection(){
+		for(int i=0; i<total_cars; i++){
+			display(available_cars[i]);
+			if(select==1){
+				new_car=available_cars[i];
+				book(available_cars[i]);	// use case με κράτηση και ενοικίαση
+				break;
+
+			}
+		}
+		return new_car;
+	}
+}
+
+public class ReplacementScreen{
+	private string car_id;
+	private int customer_id; 
+	
+	public void display() {
+  		//ui code
+  	}
+
+	CarSelection();
+}
+public class AppointmentHandlingClass{
+	private string date;
+	private string time;
+	private string place;
+	
+	private boolean answer; 
+	private string old_car;
+	private string new_car;
+	
+	private boolean confirm;
+
+	public string MakeAppointment(){
+		
+		confirm = false;
+
+		while(!confirm){
+
+			system.out.print("Enter date");
+			date = scanner.nextLine();
+		
+			system.out.print("Enter time");
+			time = scanner.nextLine();
+
+			system.out.print("enter store");
+			place = scanner.nextLine();
+
+			confirm = CheckDatePlace(date, time, place);
+	 	}
+
+		return appointment;
+	}
+
+}
+public class AppointmentScreen{
+
+	public void display() {
+  		//ui code
+  	}
+	MakeAppointment();
+}
+
+public class DBManager{
+	public void UpdateCarHistory(string car_id){
+
+	}
+
+	public string SearchAvailCars(){
+
+	}
+
+	public void BookCar(string car_id, int customer_id){
+
+	}
+	
+	public boolean ConfirmDatePlace(string date, string time, string place){
+		
+		return answer;
+	}
+	
+	public void store(){
+
+	}
+}
+
+
+
+
+
+public class Attraction {
+    private int attractionId;
+    private String name;
+    private String description;
+    private String location;
+    private double rating;         
+
+  
+
+   
+
+ public Attraction(int attractionId, String name, String description, String location, double rating) { 
+
+this.attractionId = attractionId; 
+this.name = name; 
+this.description = description; 
+this.location = location; 
+this.rating = rating; 
+
+    } 
+
+public int getAttractionId() {
+   return attractionId; 
+}
+public String getName() { 
+   return name; 
+}
+public String getDescription() { 
+   return description; 
+}
+public String getLocation() { 
+return location; 
+}
+public double getRating() { 
+return rating; 
+}
+ 
+public void setAttractionId(int attractionId) {
+        this.attractionId = attractionId;
+}
+public void setName(String name) { 
+        this.name = name; 
+}
+public void setDescription(String description) { 
+        this.description = description; 
+}
+public void setLocation(String location) { 
+        this.location = location; }
+public void setRating(double rating) { 
+        this.rating = rating; }
+public void displayDetails() {
+//
+}}
+ 
+
+ 
+
+public class Route { 
+    
+private int routeId;
+private String name;
+private String description;
+private double estimatedDurationHours;
+private double cost;
+private String difficultyLevel;
+private List<Attraction> attractions;
+
+
+public Route(int routeId, String name, String description, double estimatedDurationHours, double cost, String difficultyLevel) {
+        this.routeId = routeId;
+        this.name = name;
+        this.description = description;
+        this.estimatedDurationHours = estimatedDurationHours;
+        this.cost = cost;
+        this.difficultyLevel = difficultyLevel;
+        this.attractions = new ArrayList<>();
+    }
+
+
+
+
+public int getRouteId() { 
+return routeId; 
+}
+public String getName() { 
+return name; 
+}
+public String getDescription() {
+return description; 
+}
+public double getEstimatedDurationHours() {
+return estimatedDurationHours; 
+}
+public double getCost() { 
+return cost; 
+}
+public String getDifficultyLevel() { 
+return difficultyLevel; 
+}
+public List<Attraction> getAttractions() { 
+return attractions; 
+}
+
+  
+
+    public String getDifficultyLevel() { 
+
+        return difficultyLevel; 
+
+    } 
+
+  
+
+    public List<Attraction> getAttractions() { 
+
+        return attractions; 
+
+    } 
+
+
+   public void setRouteId(int routeId) {
+        this.routeId = routeId;
+
+    } 
+    public void setName(String name) { 
+    this.name = name; 
+}
+    public void setDescription(String description) { 
+    this.description = description;
+}
+    public void setEstimatedDurationHours(double estimatedDurationHours) { 
+    this.estimatedDurationHours = estimatedDurationHours; 
+}
+    public void setCost(double cost) { 
+    this.cost = cost; }
+    public void setDifficultyLevel(String difficultyLevel) { 
+    this.difficultyLevel = difficultyLevel; 
+}
+    public void setAttractions(List<Attraction> attractions) {
+    this.attractions = attractions; 
+}
+  
+public void displayRouteDetails() {
+//
+   
+    } } 
+
+ 
+
+ 
+public class PickupPoint {
+    private int pointId;
+    private String name;
+    private String address;
+    private String city;    
+
+  
+ 
+
+public PickupPoint(int pointId, String name, String address, String city) {
+        this.pointId = pointId;
+        this.name = name;
+        this.address = address;
+        this.city = city;
+
+    } 
+
+  
+
+public int getPointId() { 
+return pointId; 
+}
+public String getName() {
+return name; 
+}
+public String getAddress() { 
+return address; 
+}
+public String getCity() { 
+return city; 
+}
+ 
+public void setPointId(int pointId) {
+        this.pointId = pointId;
+    } 
+public void setName(String name) { 
+this.name = name; 
+}
+public void setAddress(String address) { 
+this.address = address; 
+}
+public void setCity(String city) { 
+this.city = city;
+}
+public void displayPointDetails() {
+//
+ 
+
+ 
+public class HotelOption {
+    private int hotelId;
+    private String name;
+    private String address;
+    private double pricePerNight;
+    private double rating;
+                          
+public HotelOption(int hotelId, String name, String address, double pricePerNight, double rating, ExternalTravelService externalService) {
+        this.hotelId = hotelId;
+        this.name = name;
+        this.address = address;
+        this.pricePerNight = pricePerNight;
+        this.rating = rating;
+        
+    } 
+
+
+
+public int getHotelId() { 
+return hotelId;
+}
+public String getName() { 
+return name; 
+}
+public String getAddress() { 
+return address;
+}
+public double getPricePerNight() { 
+return pricePerNight; 
+}
+public double getRating() { 
+return rating;
+}
+public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
+public void setName(String name) { 
+this.name = name; 
+}
+public void setAddress(String address) { 
+this.address = address; 
+}
+public void setPricePerNight(double pricePerNight) { 
+this.pricePerNight = pricePerNight; 
+}
+public void setRating(double rating) {
+this.rating = rating; 
+}
+    
+
+   public void displayHotelDetails() {
+        //
+}
+}
+
+  
+
+public class ProfileAnalyzer { 
+
+    private int analyzerId; 
+
+    private String algorithmName;  
+
+    private String lastRunDate;   
+
+  
+
+    
+
+    public ProfileAnalyzer(int analyzerId, String algorithmName) { 
+
+        this.analyzerId = analyzerId; 
+
+        this.algorithmName = algorithmName; 
+
+        this.lastRunDate = null;; 
+
+    } 
+
+public int getAnalyzerId() { 
+return analyzerId;
+} 
+
+public String getAlgorithmName() { 
+return algorithmName; 
+} 
+
+public String getLastRunDate() {
+return lastRunDate; 
+} 
+
+public void setAnalyzerId(int analyzerId) {
+        this.analyzerId = analyzerId; 
+
+    } 
+public void setAlgorithmName(String algorithmName) { this.algorithmName = algorithmName; }
+public void setLastRunDate(LocalDateTime lastRunDate) { this.lastRunDate = lastRunDate; }
+public void analyze(User user) {
+//
+
+    } 
+
+} 
+
+
+
+
+
+
+
+public class User { 
+
+   private int userId;          
+private String username; 
+private String passwordHash; 
+private Customer customerProfile;
+private List<Booking> bookings; 
+
+public User(int userId, String username, String passwordHash) {
+        this.userId = userId;
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.bookings = new ArrayList<>();
+        this.customerProfile = null; 
+
+    } 
+
+
+public int getUserId() { return userId; }
+    public String getUsername() { 
+return username; 
+}
+    public String getPasswordHash() {
+return passwordHash; 
+}
+    public Customer getCustomerProfile() { 
+return customerProfile; 
+}
+    public List<Booking> getBookings() {
+return bookings;
+}
+ } 
+
+  
+public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    
+    public void setCustomerProfile(Customer customerProfile) {
+        this.customerProfile = customerProfile;
+    }
+   }
+//public boolean authenticate(String username, String password) {
+boolean isAuthenticated = this.username.equals(username) && this.passwordHash.equals(password);
+//
+//
+//return isAuthenticated;
+
+ 
+
+
+public class Customer { 
+
+    private int customerId;
+    private String email;
+    private String phoneNumber;
+    private int violationCount;
+private List<Booking> bookings;
+  
+
+     
+
+   pupublic Customer(int customerId, String email, String phoneNumber) {
+        this.customerId = customerId;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.violationCount = 0;
+        this.bookings = new ArrayList<>(); 
+
+    } 
+
+  
+    public int getCustomerId() { return customerId; }
+    public String getEmail() { return email; }
+    public String getPhoneNumber() { return phoneNumber; }
+    public int getViolationCount() { return violationCount; }
+    public List<Booking> getBookings() { return bookings; }
+
+    } 
+public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+public void setViolationCount(int violationCount) {
+        this.violationCount = violationCount;
+    }
+
+  //public void incrementViolationCount() { 
+
+ //public void addBooking(Booking booking) {
+
+
+    } }
+
+ 
+
+ 
+
+ public class Booking { 
+
+
+    private int bookingId;
+    private LocalDateTime date;
+    private String vehicleType;
+    private String pickupLocation;
+    private String dropoffLocation;
+    private String paymentStatus; 
+    private double originalCost;
+    private String status    
+
+  
+
+  
+
+public Booking(int bookingId, LocalDateTime date, String vehicleType,String pickupLocation, String dropoffLocation, double originalCost)  
+
+{ 
+
+        this.bookingId = bookingId; 
+
+        this.date = date; 
+
+        this.vehicleType = vehicleType; 
+
+        this.pickupLocation = pickupLocation; 
+
+        this.dropoffLocation = dropoffLocation; 
+
+        this.originalCost = originalCost; 
+
+        this.paymentStatus = "Pending";  // προεπιλεγμενη κατσταση 
+
+        this.status = "Confirmed";       // προεπιλεγμενη κατσταση 
+
+    } 
+
+  
+
+    
+
+    public int getBookingId() { 
+
+        return bookingId; 
+
+    } 
+    public LocalDateTime getDate() { 
+
+        return date; 
+
+    } 
+
+  
+
+    public String getVehicleType() { 
+
+        return vehicleType; 
+
+    } 
+
+  
+
+    public String getPickupLocation() { 
+
+        return pickupLocation; 
+
+    } 
+
+  
+
+    public String getDropoffLocation() { 
+
+        return dropoffLocation; 
+
+    } 
+
+  
+
+    public String getPaymentStatus() { 
+
+        return paymentStatus; 
+
+    } 
+
+  
+
+    public double getOriginalCost() { 
+
+        return originalCost; 
+
+    } 
+
+  
+
+    public String getStatus() { 
+
+        return status; 
+
+    } 
+
+  
+
+public void setBookingId(int bookingId) {
+        this.bookingId = bookingId;
+    }
+public void setPaymentStatus(String paymentStatus) {
+      //
+public void setStatus(String status) {
+     //
+  //
+public boolean cancel(Cancellation cancellationDetails) {
+//
+    } 
+////
+
+ 
+
+  
+
+public class Cancellation { 
+
+   
+    private int cancellationId;
+    private LocalDateTime cancellationDate;
+    private String cancellationReason;
+    private double refundAmount;
+    private boolean penaltyApplied;
+  
+
+     
+
+public Cancellation(int cancellationId, String cancellationReason) {
+        this.cancellationId = cancellationId;
+        this.cancellationDate = LocalDateTime.now();
+        this.cancellationReason = cancellationReason;
+        this.refundAmount = 0.0;
+        this.penaltyApplied = false;
+
+ } 
+
+  
+  public int getCancellationId() { 
+return cancellationId; 
+}
+    public LocalDateTime getCancellationDate() {
+return cancellationDate;
+}
+    public String getCancellationReason() {
+return cancellationReason; 
+}
+    public double getRefundAmount() { 
+return refundAmount; 
+}
+    public boolean isPenaltyApplied() { 
+return penaltyApplied; 
+}
+    } 
+  
+
+  
+
+public void setCancellationId(int cancellationId) {
+        this.cancellationId = cancellationId;
+
+    } 
+
+  
+
+    public void setRefundAmount(double refundAmount) {
+        this.refundAmount = refundAmount;
+//System.out.println
+
+    } 
+public void setPenaltyApplied(boolean penaltyApplied) {
+        this.penaltyApplied = penaltyApplied;
+//System.out.println
+  
+
+
+
+public double calculateRefund(double originalCost,CancellationPolicy policy, int remainingHours) {  
+
+// Χρειάζεται CancellationPolicy 
+
+public double applyPenalty(double originalCost, CancellationPolicy policy, long remainingHours) { 
+
+//
+
+
+    } 
+
+} 
+
+ 
+
+ public class CancellationPolicy { 
+
+     private int policyId;
+    private String policyName;
+    private String ruleSetDescription; 
+
+
+public CancellationPolicy(int policyId, String policyName, String ruleSetDescription) { 
+
+this.policyId = policyId; 
+this.policyName = policyName; 
+this.ruleSetDescription = ruleSetDescription; 
+
+    } 
+
+
+    public int getPolicyId() { 
+
+      return policyId; 
+
+    } 
+
+   public String getPolicyName() { 
+
+        return policyName; 
+
+    } 
+
+   public String getRuleSetDescription() { 
+
+        return ruleSetDescription; 
+
+    } 
+
+
+
+    public void setPolicyId(int policyId) {
+        this.policyId = policyId;
+
+      //
+    } 
+
+  
+public double calculatePenalty(double originalCost, int remainingHours) { 
+
+//
+return penaltyAmount;
+    }} 
+
+  
+
+public class Payment {   
+
+    private int paymentId;
+    private int bookingId;
+    private double amount;
+    private String paymentType;
+    private LocalDateTime transactionDate;
+    private String status;         
+
+   
+
+public Payment(int paymentId, int bookingId, double amount, String paymentType) {
+        this.paymentId = paymentId;
+        this.bookingId = bookingId;
+        this.amount = amount;
+        this.paymentType = paymentType;
+        this.transactionDate = LocalDateTime.now();
+        this.status = "Pending";
+
+    } 
+
+
+    public int getPaymentId() { 
+
+        return paymentId; 
+
+    } 
+
+  
+
+    public int getBookingId() { 
+
+        return bookingId; 
+
+    } 
+
+  
+
+    public double getAmount() { 
+
+        return amount; 
+
+    } 
+
+  
+
+    public String getPaymentType() { 
+
+        return paymentType; 
+
+    } 
+
+  
+
+    public LocalDateTime getTransactionDate() { 
+
+        return transactionDate; 
+
+    } 
+
+  
+
+    public String getStatus() { 
+
+        return status; 
+
+    } 
+public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
+}
+
+    public void setStatus(String status) { 
+
+        this.status = status; 
+
+    } 
+
+
+public boolean processPayment() { 
+
+//
+//return true; ;h false;
+    } 
+
+  
+
+public boolean processRefund(double refundAmount) { 
+
+//
+//return true; ;h false;
+    } 
+
+} 
+public class System {
+private DatabaseManager dbManager; // gia bd
+public System() {
+this.dbManager = new DatabaseManager();
+//
+public User authenticateUser(String username, String password) {
+//isos return user;
+public boolean cancelBooking(int userId, int bookingId) {
+//
+//return true /false;
+public String displayCancellationConfirmation(Booking booking, Cancellation cancellation) {
+//kapoio message
+return message;}
+
+ 
+
+ 
+
+ 
+
+ // Τροποποίηση Προφίλ 
+
+
+public class MainScreen {
+
+       public void Edit_Profile()
+       {
+// Create a new JFrame as the edit profile screen
+        JFrame editFrame = new JFrame("Edit Profile");
+
+        // Optional: Add something to the new screen (e.g., a label)
+        JLabel label = new JLabel("Edit Profile Screen ");
+        editFrame.add(label);
+ 
+       }
+
+ } //End of MainScreen
+
+
+public class EditProfileScreen{
+
+ private String username = "DefaultUser";
+    private String password = "1234";
+    private String location = "Unknown";
+
+private JFrame frame;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+    private JTextField locationField;
+
+
+     public void display()
+    {
+
+        frame = new JFrame("Edit Profile Screen");
+
+    }
+
+        public void Show_message(String message)
+      {
+
+       JOptionPane.showMessageDialog(null, "Successful change");
+
+      }
+
+        public void Edit_username(String newUsername)
+       {
+            public void Edit_username(String newUsername) {
+        JFrame frame = new JFrame("Edit Username");
+        frame.add(new JLabel("Username Edit Screen"));
+        setupFrame(frame);
+
+       }
+
+
+      public void Edit_password(String newPassword)
+      {
+ JFrame frame = new JFrame("Edit Password");
+        frame.add(new JLabel("Password Edit Screen"));
+        setupFrame(frame);
+      }
+
+      public void Edit_location(String newLocation)
+     {
+ JFrame frame = new JFrame("Edit Location");
+         frame.add(new JLabel(" Result Screen"));
+        setupFrame(frame);
+     }
+
+  } // End of Edit Profile Screen
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class UsernameEditScreen {
+
+     public void display()
+     {
+  JFrame frame = new JFrame("Username Edit Screen");
+        JLabel label = new JLabel("This is the Username Edit Screen");
+        frame.add(label);
+     }
+
+       public void write_new_username_and_submit()
+        {
+ JFrame frame = new JFrame("Change Username");
+
+        JLabel label = new JLabel("Enter new username:");
+        JTextField usernameField = new JTextField(15);
+        JButton submitButton = new JButton("Submit");
+
+        submitButton.addActionListener(e -> {
+            String newUsername = usernameField.getText();
+            // You now have the new username stored in newUsername
+            // Nothing else happens — just captures the input
+        });
+
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(usernameField);
+        panel.add(submitButton);
+
+        frame.add(panel);
+        frame.setSize(300, 150);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+
+ 
+}// end of Username Edit Screen
+
+
+
+
+
+
+
+
+
+
+
+public class Password Edit Screen{
+
+        public void display()
+      {
+JFrame frame = new JFrame("Password Edit Screen");
+        JLabel label = new JLabel("Password Edit Screen");
+        frame.add(label);
+      }
+
+    public void write_new_password_and_submit() {
+        JFrame frame = new JFrame("Change Password");
+
+        JLabel label = new JLabel("Enter new password:");
+        JPasswordField passwordField = new JPasswordField(15);
+        JButton submitButton = new JButton("Submit");
+
+        submitButton.addActionListener(e -> {
+            String newPassword = new String(passwordField.getPassword());
+           
+        });
+
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(passwordField);
+        panel.add(submitButton);
+
+        frame.add(panel);
+        frame.setSize(300, 150);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
+       
+  } // end of Password Edit Screen
+ 
+
+
+
+
+
+
+public class ResultScreen{
+
+     public void display()
+    { 
+  JFrame frame = new JFrame("Result Screen");
+        JLabel label = new JLabel("This is the Result Screen");
+        frame.add(label);
+
+        frame.setSize(300, 150);
+        frame.setLocationRelativeTo(null); // Center on screen
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
+    public List<String> return_locations()
+    {
+       //needs filling
+    }
+
+   public String choose_location_and_submit() 
+   {
+ List<String> locations = return_locations();
+
+        // Show a dialog with a dropdown to choose one location
+        String selected = (String) JOptionPane.showInputDialog(
+                null,
+                "Choose a location:",
+                "Location Selection",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                locations.toArray(),
+                locations.get(0)
+        );
+
+        return selected; // This will be null if user cancels
+   } 
+
+ } // End of Result Screen
+
+
+
+
+
+
+
+
+
+
+
+public class InvalidCheckScreen{
+
+      public void display() 
+       {
+        frame = new JFrame("Invalid Check Screen");
+        JLabel label = new JLabel("Invalid Check Screen");
+        frame.add(label);
+
+        frame.setSize(300, 150);
+        frame.setLocationRelativeTo(null); // Center on screen
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+       }
+  
+       public void  Show_message1(String message)
+       {
+ JOptionPane.showMessageDialog(null, "Password already in use", "Error", JOptionPane.ERROR_MESSAGE);
+       }
+
+  public void  Show_message2(String message)
+       {
+ JOptionPane.showMessageDialog(null, "Username already in use", "Error", JOptionPane.ERROR_MESSAGE);
+       }
+
+
+       public void close_message()
+       {
+ messageDialog = new JDialog(frame, "Close Message", true); // modal dialog
+
+        JLabel msgLabel = new JLabel("Click the button to close this message.");
+        msgLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        JButton closeButton = new JButton("Close");
+        closeButton.addActionListener(e -> messageDialog.dispose());
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(msgLabel);
+        panel.add(Box.createVerticalStrut(10));
+        panel.add(closeButton);
+
+        messageDialog.add(panel);
+        messageDialog.setSize(300, 150);
+        messageDialog.setLocationRelativeTo(frame);
+        messageDialog.setVisible(true);
+
+       } 
+ 
+    } // End of Invalid Check Screen
+
+
+
+
+
+public class MainScreen {
+
+     public void Edit_Kratisi()
+      {
+    EditKratisiScreen screen = new EditKratisiScreen();
+        screen.display(); // This opens the new screen
+      }
+
+
+} //End of  MainScreen
+
+
+
+
+
+
+public class BookingScreen {
+
+ private JFrame frame;
+    private JComboBox<String> comboBox;
+    private List<String> bookings = new ArrayList<>();
+
+     public void display()
+    {
+frame = new JFrame("Booking Screen");
+        JLabel label = new JLabel("Choose a booking:");
+
+        comboBox = new JComboBox<>(); // Empty initially
+
+        JButton submitButton = new JButton("Submit");
+        submitButton.addActionListener(e -> chooses_kratisi_and_submit());
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(label);
+        panel.add(comboBox);
+        panel.add(submitButton);
+
+        frame.add(panel);
+        frame.setSize(300, 200);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+  }
+
+    public chooses_kratisi_and_submit()
+     {  
+ // Split the input string by commas and fill the combo box
+        String[] items = kratisi.split(",");
+        bookings.clear();
+        comboBox.removeAllItems();
+
+        for (String item : items) {
+            bookings.add(item.trim());
+            comboBox.addItem(item.trim());
+        }
+
+     }
+
+   
+ 
+     public send_results(String kratisi) 
+      {
+
+ // Split the input string by commas and fill the combo box
+        String[] items = kratisi.split(",");
+        bookings.clear();
+        comboBox.removeAllItems();
+
+        for (String item : items) {
+            bookings.add(item.trim());
+            comboBox.addItem(item.trim());
+        }
+
+      }
+
+}  // End of BookingScreen
+
+
+
+
+
+public class EditBookingScreen {
+
+ private JFrame frame;
+    private JTextField pickupDateField;
+    private JTextField dropOffLocationField;
+
+     public void display()
+    {
+
+  frame = new JFrame("Edit Booking Screen"); // New Screen name
+
+        JLabel label1 = new JLabel("New Pickup Date:");
+        pickupDateField = new JTextField(15);
+
+        JLabel label2 = new JLabel("New Drop-off Location:");
+        dropOffLocationField = new JTextField(15);
+
+        JButton submitButton = new JButton("Submit Changes");
+        submitButton.addActionListener(e -> chooses_changes_and_submit());
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(label1);
+        panel.add(pickupDateField);
+        panel.add(label2);
+        panel.add(dropOffLocationField);
+        panel.add(submitButton);
+
+        frame.add(panel);
+        frame.setSize(300, 250);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
+     public chooses_changes_and_submit()
+    {
+   String newPickupDate = pickupDateField.getText();
+        String newDropOffLocation = dropOffLocationField.getText();
+
+        // Very simple: just print or use these values
+        System.out.println("New Pickup Date: " + newPickupDate);
+        System.out.println("New Drop-off Location: " + newDropOffLocation);
+
+        // Optionally close the window
+        frame.dispose();
+
+    }
+
+
+
+} // End of Edit Booking Screen
+
+
+
+
+
+
+public class ManageSearch {
+
+ private List<String> submittedUsernames = new ArrayList<>();
+    private List<String> submittedPasswords = new ArrayList<>();
+
+ private List<String> bookings = new ArrayList<>();
+    private String proposedPickupDate;
+    private String proposedDropOffLocation;
+
+       public void ask_for_kratiseis()
+     {
+  System.out.println("Stored bookings:");
+        for (String booking : bookings) {
+            System.out.println(booking);
+        }
+
+     }
+
+    public void send_changes(String newPickupDate, String newDropOffLocation) 
+{
+        // Store the proposed changes
+        this.proposedPickupDate = newPickupDate;
+        this.proposedDropOffLocation = newDropOffLocation;
+
+        System.out.println("Received proposed changes:");
+        System.out.println("New Pickup Date: " + newPickupDate);
+        System.out.println("New Drop-off Location: " + newDropOffLocation);
+    }
+
+
+          public boolean valid_and_available()
+         {
+ // Check if proposed changes are not null or empty
+    if (proposedPickupDate == null || proposedPickupDate.isEmpty()) {
+        System.out.println("Pickup date is invalid.");
+        return false;
+    }
+    if (proposedDropOffLocation == null || proposedDropOffLocation.isEmpty()) {
+        System.out.println("Drop-off location is invalid.");
+        return false;
+    }
+
+    // Check availability: ensure no booking already has the same pickup date
+    for (String booking : bookings) {
+        if (booking.contains(proposedPickupDate)) {
+            System.out.println("Pickup date " + proposedPickupDate + " is already booked.");
+            return false;
+        }
+    }
+
+    
+    return true;
+
+       }
+
+ 
+
+
+
+public void send_results()
+      {
+
+ public void send_results(String newUsername, String newPassword) {
+        
+        submittedUsernames.add(newUsername);  // Store the submitted Username!
+        submittedPasswords.add(newPassword);  // Store the submitted Password!
+}
+      }
+
+ 
+
+} // End of Manage Search
+
+
+Public class ConfirmScreen{
+
+      public void display()
+      {
+ frame = new JFrame("Confirm Screen");
+
+        JLabel label = new JLabel("Are you sure you want to confirm?");
+        JButton submitButton = new JButton("Submit"); // <-- The Submit button
+
+        // When the button is clicked, run the final_submit() method
+        submitButton.addActionListener(e -> final_submit());
+
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(submitButton);
+
+        frame.add(panel);
+        frame.setSize(300, 150);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       }
+
+       public final_submit()
+       {
+System.out.println("Submitting booking..."); 
+ show_message();
+ frame.dispose(); // Close the frame after submission
+
+       }
+
+
+    public void show_message(String message)
+    {
+ JOptionPane.showMessageDialog(null, "booking changed successfully");
+    }  
+
+
+} // End of Confirm Screen
+
+
+public class PaymentScreen{
+
+
+private int amount;
+private string customer;
+
+       public void display()
+    {
+frame = new JFrame("Payment Screen");
+
+        
+        JButton payButton = new JButton("Pay");
+
+         payButton.addActionListener(e -> payment());
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(payButton);
+
+        frame.add(panel);
+        frame.setSize(300, 150);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+    }
+
+     public double return_cost()
+     {
+
+   return amount;
+
+     }
+
+    public void payment()
+    {
+ExternalPaymentScreen externalPayment = new ExternalPaymentScreen();
+    externalPayment.display(); // open External Paymennt Screen
+
+    // Optionally close the current payment screen
+    frame.dispose();
+
+    }
+
+    public void show_message3(String message)
+    {
+ JOptionPane.showMessageDialog(null, "Error in Payment! Please try again or use another payment method!");
+    }
+
+public void show_message4() {
+        JOptionPane.showMessageDialog(null, "New Cost is Less. No further payment needed!");
+    }
+
+
+ public void close message()
+    {
+ JFrame closeFrame = new JFrame("Close Message");
+        JButton closeButton = new JButton("Close");
+
+        closeButton.addActionListener(e -> closeFrame.dispose());
+
+        JPanel panel = new JPanel();
+        panel.add(new JLabel("Press to close message"));
+        panel.add(closeButton);
+
+        closeFrame.add(panel);
+        closeFrame.setSize(250, 100);
+        closeFrame.setLocationRelativeTo(null);
+        closeFrame.setVisible(true);
+        closeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+    }
+
+ 
+} // end of PaymentScreen
+
+public class Invalid Booking Screen {
+
+ 
+
+     public void display()
+    {
+ private JFrame frame;
+
+    public void display() {
+        frame = new JFrame("Invalid Booking Screen");
+        JLabel label = new JLabel("Invalid booking details.");
+        JButton closeButton = new JButton("Close");
+
+        closeButton.addActionListener(e -> frame.dispose());
+
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(closeButton);
+
+        frame.add(panel);
+        frame.setSize(300, 100);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+ 
+    }
+
+     public void show_message5(String message)
+     {
+ JOptionPane.showMessageDialog(null, "Changes not Available!");
+     }
+
+    public void close_message()
+   {
+ JFrame closeFrame = new JFrame("Close Message");
+        JButton closeButton = new JButton("Close");
+
+        closeButton.addActionListener(e -> closeFrame.dispose());
+
+        JPanel panel = new JPanel();
+        panel.add(new JLabel("Press to close this message"));
+        panel.add(closeButton);
+
+        closeFrame.add(panel);
+        closeFrame.setSize(250, 100);
+        closeFrame.setLocationRelativeTo(null);
+        closeFrame.setVisible(true);
+        closeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+   }
+
+
+} // End of InvalidBookingScreen
+
+public class ExternalPaymentScreen{
+
+      public void display()
+     {
+frame = new JFrame("External Payment Screen");
+
+        JLabel label = new JLabel("Proceed with Payment!");
+        JButton confirmButton = new JButton("Confirm");
+
+        // When user clicks "Confirm", complete the payment
+        confirmButton.addActionListener(e -> confirm());
+
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(confirmButton);
+
+        frame.add(panel);
+        frame.setSize(300, 120);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+     }
+
+      public void confirm()
+    {
+ JOptionPane.showMessageDialog(frame, "Payment completed successfully!");
+        frame.dispose();
+    }
+
+} //end of ExternalPaymentScreen
+
+
+
+
+
+
+public class DataSourceManager{
+
+      private List<String> existingUsernames;
+      private List<String> existingPasswords;
+      private List<String> storedLocations; 
+
+     private List<String> chosenBookings;
+
+    
+    public DataSourceManager() {  // Constructor to initialize the list
+        chosenBookings = new ArrayList<>();
+   }
+
+
+
+// Constructor that receives usernames and passwords
+  public DataSourceManager(List<String> usernames, List<String> passwords) {
+        this.existingUsernames = usernames;
+        this.existingPasswords = passwords;
+    }
+
+public boolean Username_Availability_Check()
+{
+  return !existingUsernames.contains(username);
+}
+
+
+public boolean Password_Availability_Check()
+{
+  return !existingPasswords.contains(password);
+}
+
+
+public void Save_new_ Username()
+{
+JFrame frame = new JFrame("Save New Username");
+
+     
+        JTextField usernameField = new JTextField(15);
+
+        JButton saveButton = new JButton("Save");
+        saveButton.addActionListener(e -> {
+            String newUsername = usernameField.getText().trim();
+            if (!newUsername.isEmpty()) {
+                if (Username_Availability_Check(newUsername)) {
+                    existingUsernames.add(newUsername);
+                    JOptionPane.showMessageDialog(frame, "Username saved: " + newUsername);
+                    frame.dispose();
+}
+
+
+ public void Save_New_Password()
+{
+JFrame frame = new JFrame("Save New Password");
+ 
+    JPasswordField passwordField = new JPasswordField(15);
+
+    JButton saveButton = new JButton("Save");
+    saveButton.addActionListener(e -> {
+        String newPassword = new String(passwordField.getPassword()).trim();
+        if (!newPassword.isEmpty()) {
+            if (Password_Availability_Check(newPassword)) {
+                existingPasswords.add(newPassword);
+                JOptionPane.showMessageDialog(frame, "Password saved.");
+                frame.dispose();
+
+}
+
+public void Ask_For_Possible_Locations()
+{
+  JFrame frame = new JFrame("Stored Locations");
+      StringBuilder builder = new StringBuilder();
+       for (String location : storedLocations) { // loop for all stored locations
+        builder.append(location).append("\n");
+    }
+      frame.setVisible(true); //window visible for User
+frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+}
+
+ public void Save_New_Location()
+{
+if (!storedLocations.contains(newLocation)) {
+        storedLocations.add(newLocation);
+    }
+}
+
+
+  public void Send_kratiseis(List<String> bookings) {
+        if (bookings != null) {
+            chosenBookings.clear(); // Clear old bookings if any
+            chosenBookings.addAll(bookings); // Store new bookings
+        }
+    }
+
+
+
+public boolean Check_Availability_Validation(String changedBooking)
+{
+  // Example validation: check if the booking exists and changes are allowed
+    if (changedBooking == null || changedBooking.isEmpty()) {
+        return false; // Invalid input
+    }
+
+    // For demonstration, assume chosenBookings holds existing bookings
+    // Check if changedBooking is not conflicting with existing bookings
+    for (String booking : chosenBookings) {
+        if (booking.equals(changedBooking)) {
+            return false; // Change conflicts with an existing booking
+        }
+    }
+
+    // If no conflicts found, assume change is valid and available
+    return true;
+
+}
+
+public void Save_New_Kratisi()
+{
+ if (!Check_Availability_Validation(newBooking)) {
+        JOptionPane.showMessageDialog(null, "This booking is not valid or already exists.");
+        return;
+    }
+
+    chosenBookings.add(newBooking);
+    JOptionPane.showMessageDialog(null, "Booking saved successfully!");
+
+}
+
+
+private double currentBalance ;
+private double lastEvaluatedCost;
+
+public double evaluate_cost(String changeDetails) 
+{
+lastEvaluatedCost = computeCostBasedOn(changeDetails);
+
+    return lastEvaluatedCost;
+}
+
+public void Save_New_Balance()
+{
+if (currentBalance >= lastEvaluatedCost) {
+        currentBalance -= lastEvaluatedCost;
+        JOptionPane.showMessageDialog(null, "Balance updated. New balance: " + currentBalance + "€");
+    } else {
+        JOptionPane.showMessageDialog(null, "Insufficient balance to apply changes.");
+    }
+}
+
+
+
+
+}   // End of DataSourceManager
+
+
+
+
+
+
+
+
+
+
+
+
+ public class ReturnScreen {
+  private int id;
+  private int days_left;
+
+  public void display() {
+  //code for ui elements
+  }
+  public void showReturn(date) {
+    display();
+    System.out.println("Your return date is:" + date);
+    System.out.println("Your remaining days are:" + days_left);
+    }
+    
+  public boolean return() {
+    boolean confirm = 0;
+    if(user presses confirm button)
+      confirm = 1;
+    
+    return confirm;
+    }
+ }
+  
+public class ManageReturn {
+  private Date date;
+  private boolean confirm;
+  private int availability;
+  private int contract_id;
+  
+  private ReturnScreen returnS;
+  private DataSourceManager DSM;
+  private ReturnDateScreen returnDS
+
+  public ManageScreen(ReturnScreen returnS){
+    this.returnS = returnS;
+    this.DSM = new DataSourceManager();
+  }
+  private CheckDate(int contract_id){
+    date = DSM.queryReturnDate(contract_id);  
+    if(date > currentdate){
+      returnS.showReturn(date);
+    }
+    if(!DSM.CheckAvailability(returnDS.getdate(), returnDS.getcarid())){ //if car or date not available
+      NoAvailabilityScreen NoAvailScr = new NoAvailabilityScreen();
+      NoAvailScr.display();
+    }
+    ManageEvaluationScreen ManEvalScr = new ManageEvaluationScreen();
+    ManEvalScr.evaluation();
+  }
+}
+
+public class ReturnDateScreen {
+  private Date return_date;
+  private String store;
+
+  public void display() {
+    //display ui 
+  }
+
+  public Date selectDate() {
+    display();
+    Scanner scan = new Scanner(System.in);  
+
+    System.out.println("Select date:");
+    Date date = scan.nextLine(); 
+
+    System.out.println("Select car:");
+    String car_id = scan.nextLine(); 
+    }
+    public Date getdate(){
+      return date;
+    }
+    public String getcarid(){
+      return car_id;
+    }
+  }
+
+  public boolean CheckDateDetails(date) {
+    boolean DateOk = 0;
+    
+    //check validity of date
+    if(date != null && date.valid())
+      DateOk = 1;
+    
+    return DateOk;
+    }
+}
+
+public class NoAvailabilityScreen {
+  private int car_id;
+
+  public display() {
+    //code to display ui
+    System.out.println("This option is unavailable!");
+    System.out.println("Please Try Another");
+    }
+  }
+
+public class EvaluationScreen {
+  private int car_id;
+  private String comment;
+  private int stars;
+
+  public String display() {
+    //code to display ui
+
+    return evaluation;
+    }
+
+  public void submit() {
+    //code
+    }
+}
+
+public class ManagevaluationScreen() {
+  private String evaluation;
+
+
+
+  public void evaluation() {
+    EvaluationScreen EvScr = new EvaluationScreen();
+    evaluation = EvScr.display();
+    if(!CheckEvaluationDetails(evaluation)){
+        InvalidScreen InvScr = new InvalidScreen();
+        InvalidScreen.display();
+    }
+    else
+    {
+      MainScreen MScr = new MainScreen();
+      MScr.display();
+    }    
+  }
+public boolean CheckEvaluationDetails(evaluation) {
+   boolean EvaluationOk = 0;
+    
+    //check validity of evaluation
+    if(validity ok)
+      EvaluationOk = 1;
+    
+    return EvaluationOk;
+    }
+}
+
+public class AlertScreen {
+  private int days_left;
+
+    public void display(){
+    //code for ui elements
+    }
+    public void showDays() {
+      display();
+      System.out.println("Your days remaining are:" + days_left);
+    }
+}
+
+public class DeliverAlertScreen {
+  private int days_passed;
+
+  public void disply() {
+    //code for ui elements
+    }
+}
+
+public class ManageAlertScreens {
+  private int days;
+  private int customer_id
+  private DataSourceManager DSM;
+  private AlertScreen AlScr;
+
+  public ManageAlertScreens() { this.DSM = new DataSourceManager(); }
+  days = DSM.queryDays(customer_id);
+  AlScr.showDays(days);
+  TimeUnit.SECONDS.sleep(259200); //Wait 3 days
+  if(System == inactive){
+    DeliverAlertScreen DAScr = new DeliverAlertScreen();
+    DAScr.display();
+  }
+  TimeUnit.SECONDS.sleep(259200); //Wait 3 more days
+  if(System == inactive){
+    PenaltyScreen PenScr = new PenaltyScreen();
+    PenScr.display(customer_id);
+  }
+}
+
+public class PenaltyScreen {
+  private DataSourceManager DSM;
+  
+  public void PenatlyScreen() {this.DSM = new DataSourceManager();}
+  public void display(int customer_id) {
+     //code for ui elements
+     System.out.println("Due to extended delays, you have been issued penalties");
+     DSM.updatehistory(customer_id); 
+  }
+
+}
+
+public class InvalidScreen {
+  
+  public void display() {
+      System.out.println("The Details are not ok, please try again");
+    }
+
+}
+
+
+    DROP DATABASE IF EXISTS travel_booking_db;
+CREATE DATABASE travel_booking_db;
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL, -- Use a longer hash for real applications
+    customer_id INT UNIQUE, -- Foreign key to customers table
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+DROP TABLE IF EXISTS customers;
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone_number VARCHAR(20),
+    violation_count INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+///
+DROP TABLE IF EXISTS bookings;
+CREATE TABLE bookings (
+    booking_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL, -- Foreign key to users table
+    customer_id INT,    -- Foreign key to customers table (redundant but useful for direct link)
+    booking_date DATETIME NOT NULL,
+    vehicle_type VARCHAR(50) NOT NULL,
+    pickup_location VARCHAR(255) NOT NULL,
+    dropoff_location VARCHAR(255) NOT NULL,
+    original_cost DECIMAL(10, 2) NOT NULL,
+    payment_status ENUM('Pending', 'Paid', 'Refunded', 'Failed') DEFAULT 'Pending',
+    booking_status ENUM('Confirmed', 'Cancelled', 'Completed', 'Pending') DEFAULT 'Confirmed',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_booking_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_booking_customer FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+DROP TABLE IF EXISTS cancellations;
+CREATE TABLE cancellations (
+    cancellation_id INT PRIMARY KEY AUTO_INCREMENT,
+    booking_id INT NOT NULL, -- Foreign key to bookings table
+    cancellation_date DATETIME NOT NULL,
+    cancellation_reason VARCHAR(255),
+    refund_amount DECIMAL(10, 2) NOT NULL,
+    penalty_applied BOOLEAN DEFAULT FALSE,
+    CONSTRAINT fk_cancellation_booking FOREIGN KEY (booking_id) REFERENCES bookings(booking_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+DROP TABLE IF EXISTS cancellation_policies;
+CREATE TABLE cancellation_policies (
+    policy_id INT PRIMARY KEY AUTO_INCREMENT,
+    policy_name VARCHAR(100) NOT NULL UNIQUE,
+    rule_set_description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+DROP TABLE IF EXISTS payments;
+CREATE TABLE payments (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    booking_id INT, -- Can be NULL if it's a standalone payment/refund not directly tied to a booking at creation
+    amount DECIMAL(10, 2) NOT NULL,
+    payment_type VARCHAR(50), -- e.g., 'Credit Card', 'PayPal', 'Refund'
+    transaction_date DATETIME NOT NULL,
+    status ENUM('Pending', 'Paid', 'Refunded', 'Failed') DEFAULT 'Pending',
+    CONSTRAINT fk_payment_booking FOREIGN KEY (booking_id) REFERENCES bookings(booking_id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+DROP TABLE IF EXISTS attractions;
+CREATE TABLE attractions (
+    attraction_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    location VARCHAR(255),
+    rating DECIMAL(2, 1) -- e.g., 4.5
+);
+DROP TABLE IF EXISTS routes;
+CREATE TABLE routes (
+    route_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    estimated_duration_hours DECIMAL(5, 2),
+    cost DECIMAL(10, 2),
+    difficulty_level ENUM('Easy', 'Medium', 'Hard')
+);
+DROP TABLE IF EXISTS pickup_points;
+CREATE TABLE pickup_points (
+    point_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(255),
+    city VARCHAR(100)
+);
+DROP TABLE IF EXISTS profile_analyzers;
+CREATE TABLE profile_analyzers (
+    analyzer_id INT PRIMARY KEY AUTO_INCREMENT,
+    algorithm_name VARCHAR(100) NOT NULL,
+    last_run_date DATETIME
+);
+
+
+
+
+
+
+
+public class DeliverScreen {
+  private String return_store;
+  private Date return_date;
+  private int car_id;
+  private int customer_id;
+
+  public void display() {
+  //code for ui elements for the proper logged in customer
+  if (confirm())    
+  return confirm;
+  }
+
+  public boolean confirm() {
+    private boolean confirm = 0;
+    if(user has confirmed using button)
+    confirm = 1;
+    return confirm;
+  }
+}
+
+public class ManageDeliveryScreens {
+  private boolean confirm;
+  private DeliverScreen DScr;
+  private DeliverUpdateScreen DUScr;
+
+  Manage DeliveryScreens(DeliverScreen DScr){
+    this.DScr = DScr;
+    this.DUScr = DUScr;
+  }
+  if(DScr.display())
+  DUScr.display()
+  ManageCarStatusScreen MCSScr = new ManageCarStatusScreen();
+  MCSScr.start(customer_id);
+}
+
+public class DeliveryUpdateScreen {
+
+  public void display() {
+    //code for ui elements
+    System.out.println("Your delivery has been successful!"); 
+  }
+}
+
+public class ManageCarStatusScreen {
+  private String CarStatusDetails;
+  private String history;
+  private DataSourceManager DSM;
+  private int customer_id;
+  private int cost
+
+  public ManageCarStatusScreen() { this.DSM = new DataSourceManager(); }
+
+  public void start(){
+    CarStatusScreen CSScr = new CarStatusScreen();
+    CarStatusDetails = CSScr.display();
+    History = DSM.checkHistory(customer_id);
+    cost = CalculateCost(Cost, history);
+    ManagePaymentScreens MPScr = new ManagePaymentScreens();
+    MPScr.start(customer_id);
+  }
+  public int CalculateCost(int Cost, String History) {
+    int H = conv(History);
+    int FinalCost = Cost - H;
+    return FinalCost;
+  }
+}
+
+public class CarStatusScreen {
+  private String status;
+  private int est_time;
+
+  Scanner scan = new Scanner(System.in);  
+
+  public void display() {
+  //ui code
+  }
+  public String submit() {
+    System.out.println("Please provide car details:");
+    String CarStatusDetails = scan.nextLine();  
+    if(user presses submit button)
+    return CarStatusDetails;
+  }
+}
+
+public class ManagePaymentScreens {
+  private int customer_id;
+
+  public void start(int customer_id, amount){
+    PaymentScreen PScr = new PaymentScreen();
+    PScr.display(customer_id, amount);
+  }
+  public void startPayment(int customer_id, amount) {
+    ExtrernalPaymentScreen EPScr = new ExtrernalPaymentScreen();
+    EPScr.display();
+  }
+  public boolean paymentComplete(int customer_id, amount) {
+   DSM.registerPayment(customer_id, amount);
+   DSM.updateAvailability(car_id, time);
+   ContractCompletionScreen CCScr = new ContractCompletionScreen();
+   CCScr.display();
+   MainScreen MScr = new MainScreen();
+   MScr.display(); 
+  }  
+}
+
+public class PaymentScreen {
+  private int amount;
+  private String Customer;
+  private String type;
+
+  public void display(amount) {
+    //code for ui elements
+    System.out.println("You are paying:" + amount);
+  }
+  public boolean payment() {
+    int boolean confirm = 0,
+    if(user confirms)
+    confirm = 1;
+  }
+}
+
+public class ExternalPaymentScreen {
+  private int amount;
+  private String Customer;
+  private String type;
+  private int payment_id;
+
+  Random r = new Random();
+
+  public void display(amount, Customer) {
+    //External API usage
+    complete();
+  }
+  public int complete() {
+    int payment_id = r.nextInt(100000);
+    return payment_id;
+  }
+}
+
+public class ContractCompletionScreen {
+  private int customer_id;
+  private int contract_id;
+  private Date expiration_date;
+  private Date contract_date;
+
+  public void display() {
+    //code for ui elements
+    System.out.println("Your order has been completed!");
+  }
+}
+
+public class PaymentFailedScreen {
+  private int amount;
+  private int fail_id;
+
+  public void display(int fail_id) {
+    //code for ui elements
+    System.out.println("Payment has failed:" + fail_id);
+   }
+}
+
+
+
+public class StuffManager{
+	
+	private int user_id;
+	private int selected_engineer
+
+	public int AvailableEngineers(){
+		
+		for(int i=0; i< stuff_counter; i++){
+			if(staff[i].role == engineer){
+				if(current_tasks<=2){
+					selected_engineer=staff[i];	
+					break; 
+				}	
+			}
+		}
+		return selected_engineer;	
+	}
+}
+
+public class RepairScreen{
+	private int user_id;
+	private char car_id;
+
+	public void display(){
+  		//ui code
+  	}
+
+	public void DisplayNewRepair(string car_id){
+		system.out.print(" New Repair: Car %s", car_id);
+	}
+}
+
+public class DamageManagerClass{
+	private string car_id;
+	public boolean CarOkFlag;
+	store_info(){
+
+	}
+
+	public boolean CarIsReady(string car_id){
+				
+		// /
+		return CarOkFlag; 
+	}
+
+}
+
+public class DamageInfoScreen{
+	private string car_id;
+	private int user_id;
+	private string damage_description;
+	private string repair_method; 
+	
+	private string specialized_service_location;
+	private string specialized_service_info;
+	private string specialized_service_reason;
+
+	public void display(){
+  		//ui code
+  	}
+
+	public void SpecializedRepair(){
+		System.out.println("Location of specialized service: ");
+		specialized_service_location = scanner.nextLine();
+
+		System.out.println("name of specialized service: ");
+		specialized_service_info = scanner.nextLine();
+
+		System.out.println("Why the car needs specialized service: ");
+		specialized_service_reason = scanner.nextLine();
+	
+	}
+
+	public GetDamageAndRepairInfo(){
+		System.out.println("Damage: ");
+		damage_description = scanner.nextLine();
+
+		System.out.println("Repair plans: ");
+		repair_method = scanner.nextLine();
+	
+		if(repair_method.contains("specialized service")){
+			SpecializedRepair();
+		}
+	}
+	
+	public void ReportUpdates(string update){
+
+
+	}
+
+	public void ShowCustomer(int user_id){
+		
+
+	}
+	
+	public void ConfirmCustomer(){
+
+
+	}
+
+
+}
+
+public class RepairCompleteClass{
+	private string car_id;
+
+
+}
+
+
+public class DSManager{
+	
+	
+	public void CarsToBeRepaired(){
+
+	}
+	public int AssignCarToMechanic{
+
+	}
+	
+	public void StoreDamageInfo(){
+
+	}
+	public void SearchCustomer(){
+
+	}
+	public void StoreCase(){
+
+	}
+
+}
+
+
+
+
+ 
