@@ -1,0 +1,110 @@
+public class StuffManager{
+	
+	private int user_id;
+	private int selected_engineer
+
+	public int AvailableEngineers(){
+		
+		for(int i=0; i< stuff_counter; i++){
+			if(staff[i].role == engineer){
+				if(current_tasks<=2){
+					selected_engineer=staff[i];	
+					break; 
+				}	
+			}
+		}
+		return selected_engineer;	
+	}
+}
+
+public class RepairScreen{
+	private int user_id;
+	private char car_id;
+
+	public void display(){
+  		//ui code
+  	}
+
+	public void DisplayNewRepair(string car_id){
+		system.out.print(" New Repair: Car %s", car_id);
+	}
+}
+
+public class DamageManagerClass{
+	private string car_id;
+	public boolean CarOkFlag;
+	store_info(){
+
+	}
+
+	public boolean CarIsReady(string car_id){
+				
+		
+		return CarOkFlag; 
+	}
+
+}
+
+public class DamageInfoScreen{
+	private string car_id;
+	private int user_id;
+
+	public void display(){
+  		//ui code
+  	}
+
+	public GetDamageAndRepairInfo(){
+		
+	}
+
+	public void SpecializedRepair(){
+
+	}
+	public void ReportUpdates(string update){
+
+
+	}
+
+	public void ShowCustomer(int user_id){
+
+	}
+	
+	public void ConfirmCustomer(){
+
+
+	}
+
+
+}
+
+public class RepairCompleteClass{γιατ
+	private string car_id;
+
+	public int 
+
+
+
+}
+
+
+public class DSManager{
+	
+	
+	public void CarsToBeRepaired(){
+
+	}
+	public int AssignCarToMechanic{
+
+	}
+	
+	public void StoreDamageInfo(){
+
+	}
+	public void SearchCustomer(){
+
+	}
+	public void StoreCase(){
+
+	}
+
+}
