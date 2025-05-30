@@ -1,14 +1,8 @@
-public class Attraction { 
-
-
-    private int attractionId;      
-
-    private String name;        
-
-    private String description;   
-
-    private String location;        
-
+public class Attraction {
+    private int attractionId;
+    private String name;
+    private String description;
+    private String location;
     private double rating;         
 
   
@@ -17,140 +11,95 @@ public class Attraction {
 
  public Attraction(int attractionId, String name, String description, String location, double rating) { 
 
-        this.attractionId = attractionId; 
-
-        this.name = name; 
-
-        this.description = description; 
-
-        this.location = location; 
-
-        this.rating = rating; 
+this.attractionId = attractionId; 
+this.name = name; 
+this.description = description; 
+this.location = location; 
+this.rating = rating; 
 
     } 
 
-  
-
-    
-
-    public int getAttractionId() { 
-
-        return attractionId; 
-
-    } 
-
-  public String getName() { 
-
-        return name; 
-
-    } 
-
- public String getDescription() { 
-
-        return description; 
-
-    } 
-
- public String getLocation() { 
-
-        return location; 
-
-    } 
-
-  public double getRating() 
-
- { 
-
-        return rating; 
-
-    } 
-
+public int getAttractionId() {
+   return attractionId; 
+}
+public String getName() { 
+   return name; 
+}
+public String getDescription() { 
+   return description; 
+}
+public String getLocation() { 
+return location; 
+}
+public double getRating() { 
+return rating; 
+}
  
- public void displayDetails() { 
-
-        //
-
-    } }
+public void setAttractionId(int attractionId) {
+        this.attractionId = attractionId;
+}
+public void setName(String name) { 
+        this.name = name; 
+}
+public void setDescription(String description) { 
+        this.description = description; 
+}
+public void setLocation(String location) { 
+        this.location = location; }
+public void setRating(double rating) { 
+        this.rating = rating; }
+public void displayDetails() {
+//
+}}
  
 
  
 
 public class Route { 
-
-     
-
-    private int routeId;                                              
-
-    private String name;                                          
-
-    private String description;                                 
-
-    private double estimatedDurationHours;   
-
-    private double cost;                                               
-
-    private String difficultyLevel;                             
-
-    private List<Attraction> attractions; 
+    
+private int routeId;
+private String name;
+private String description;
+private double estimatedDurationHours;
+private double cost;
+private String difficultyLevel;
+private List<Attraction> attractions;
 
 
-public Route(int routeId, String name, String description, double estimatedDurationHours, double cost, String difficultyLevel) { 
-
-        this.routeId = routeId; 
-
-        this.name = name; 
-
-        this.description = description; 
-
-        this.estimatedDurationHours = estimatedDurationHours; 
-
-        this.cost = cost; 
-
-        this.difficultyLevel = difficultyLevel; 
-
-        this.attractions = new ArrayList<>(); 
-
-    } 
+public Route(int routeId, String name, String description, double estimatedDurationHours, double cost, String difficultyLevel) {
+        this.routeId = routeId;
+        this.name = name;
+        this.description = description;
+        this.estimatedDurationHours = estimatedDurationHours;
+        this.cost = cost;
+        this.difficultyLevel = difficultyLevel;
+        this.attractions = new ArrayList<>();
+    }
 
 
 
-    public int getRouteId() { 
 
-        return routeId; 
-
-    } 
-
-  
-
-    public String getName() { 
-
-        return name; 
-
-    } 
-
-  
-
-    public String getDescription() { 
-
-        return description; 
-
-    } 
-
-  
-
-    public double getEstimatedDurationHours() { 
-
-        return estimatedDurationHours; 
-
-    } 
-
-  
-
-    public double getCost() { 
-
-        return cost; 
-
-    } 
+public int getRouteId() { 
+return routeId; 
+}
+public String getName() { 
+return name; 
+}
+public String getDescription() {
+return description; 
+}
+public double getEstimatedDurationHours() {
+return estimatedDurationHours; 
+}
+public double getCost() { 
+return cost; 
+}
+public String getDifficultyLevel() { 
+return difficultyLevel; 
+}
+public List<Attraction> getAttractions() { 
+return attractions; 
+}
 
   
 
@@ -169,18 +118,31 @@ public Route(int routeId, String name, String description, double estimatedDurat
     } 
 
 
-    public void addAttraction(Attraction attraction) { 
-
-       //
+   public void setRouteId(int routeId) {
+        this.routeId = routeId;
 
     } 
-
+    public void setName(String name) { 
+    this.name = name; 
+}
+    public void setDescription(String description) { 
+    this.description = description;
+}
+    public void setEstimatedDurationHours(double estimatedDurationHours) { 
+    this.estimatedDurationHours = estimatedDurationHours; 
+}
+    public void setCost(double cost) { 
+    this.cost = cost; }
+    public void setDifficultyLevel(String difficultyLevel) { 
+    this.difficultyLevel = difficultyLevel; 
+}
+    public void setAttractions(List<Attraction> attractions) {
+    this.attractions = attractions; 
+}
   
-
-    public void displayRouteDetails() { 
-
-      //
-
+public void displayRouteDetails() {
+//
+   
     } } 
 
  
