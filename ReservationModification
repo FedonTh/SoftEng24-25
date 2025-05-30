@@ -355,7 +355,7 @@ public class Invalid Booking Screen {
  
     }
 
-     public void show_message(String message)
+     public void show_message5(String message)
      {
  JOptionPane.showMessageDialog(null, "Changes not Available!");
      }
