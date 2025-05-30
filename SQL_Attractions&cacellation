@@ -79,3 +79,16 @@ CREATE TABLE routes (
     cost DECIMAL(10, 2),
     difficulty_level ENUM('Easy', 'Medium', 'Hard')
 );
+DROP TABLE IF EXISTS pickup_points;
+CREATE TABLE pickup_points (
+    point_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(255),
+    city VARCHAR(100)
+);
+DROP TABLE IF EXISTS profile_analyzers;
+CREATE TABLE profile_analyzers (
+    analyzer_id INT PRIMARY KEY AUTO_INCREMENT,
+    algorithm_name VARCHAR(100) NOT NULL,
+    last_run_date DATETIME
+);
