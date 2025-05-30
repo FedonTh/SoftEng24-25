@@ -413,5 +413,176 @@ frame = new JFrame("External Payment Screen");
 
 } //end of ExternalPaymentScreen
 
+
+
+
+
+
+public class DataSourceManager{
+
+      private List<String> existingUsernames;
+      private List<String> existingPasswords;
+      private List<String> storedLocations; 
+
+     private List<String> chosenBookings;
+
+    
+    public DataSourceManager() {  // Constructor to initialize the list
+        chosenBookings = new ArrayList<>();
+   }
+
+
+
+// Constructor that receives usernames and passwords
+  public DataSourceManager(List<String> usernames, List<String> passwords) {
+        this.existingUsernames = usernames;
+        this.existingPasswords = passwords;
+    }
+
+public boolean Username_Availability_Check()
+{
+  return !existingUsernames.contains(username);
+}
+
+
+public boolean Password_Availability_Check()
+{
+  return !existingPasswords.contains(password);
+}
+
+
+public void Save_new_ Username()
+{
+JFrame frame = new JFrame("Save New Username");
+
+     
+        JTextField usernameField = new JTextField(15);
+
+        JButton saveButton = new JButton("Save");
+        saveButton.addActionListener(e -> {
+            String newUsername = usernameField.getText().trim();
+            if (!newUsername.isEmpty()) {
+                if (Username_Availability_Check(newUsername)) {
+                    existingUsernames.add(newUsername);
+                    JOptionPane.showMessageDialog(frame, "Username saved: " + newUsername);
+                    frame.dispose();
+}
+
+
+ public void Save_New_Password()
+{
+JFrame frame = new JFrame("Save New Password");
+ 
+    JPasswordField passwordField = new JPasswordField(15);
+
+    JButton saveButton = new JButton("Save");
+    saveButton.addActionListener(e -> {
+        String newPassword = new String(passwordField.getPassword()).trim();
+        if (!newPassword.isEmpty()) {
+            if (Password_Availability_Check(newPassword)) {
+                existingPasswords.add(newPassword);
+                JOptionPane.showMessageDialog(frame, "Password saved.");
+                frame.dispose();
+
+}
+
+public void Ask_For_Possible_Locations()
+{
+  JFrame frame = new JFrame("Stored Locations");
+      StringBuilder builder = new StringBuilder();
+       for (String location : storedLocations) { // loop for all stored locations
+        builder.append(location).append("\n");
+    }
+      frame.setVisible(true); //window visible for User
+frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+}
+
+ public void Save_New_Location()
+{
+if (!storedLocations.contains(newLocation)) {
+        storedLocations.add(newLocation);
+    }
+}
+
+
+  public void Send_kratiseis(List<String> bookings) {
+        if (bookings != null) {
+            chosenBookings.clear(); // Clear old bookings if any
+            chosenBookings.addAll(bookings); // Store new bookings
+        }
+    }
+
+
+
+public boolean Check_Availability_Validation(String changedBooking)
+{
+  // Example validation: check if the booking exists and changes are allowed
+    if (changedBooking == null || changedBooking.isEmpty()) {
+        return false; // Invalid input
+    }
+
+    // For demonstration, assume chosenBookings holds existing bookings
+    // Check if changedBooking is not conflicting with existing bookings
+    for (String booking : chosenBookings) {
+        if (booking.equals(changedBooking)) {
+            return false; // Change conflicts with an existing booking
+        }
+    }
+
+    // If no conflicts found, assume change is valid and available
+    return true;
+
+}
+
+public void Save_New_Kratisi()
+{
+ if (!Check_Availability_Validation(newBooking)) {
+        JOptionPane.showMessageDialog(null, "This booking is not valid or already exists.");
+        return;
+    }
+
+    chosenBookings.add(newBooking);
+    JOptionPane.showMessageDialog(null, "Booking saved successfully!");
+
+}
+
+
+private double currentBalance ;
+private double lastEvaluatedCost;
+
+public double evaluate_cost(String changeDetails) 
+{
+lastEvaluatedCost = computeCostBasedOn(changeDetails);
+
+    return lastEvaluatedCost;
+}
+
+public void Save_New_Balance()
+{
+if (currentBalance >= lastEvaluatedCost) {
+        currentBalance -= lastEvaluatedCost;
+        JOptionPane.showMessageDialog(null, "Balance updated. New balance: " + currentBalance + "€");
+    } else {
+        JOptionPane.showMessageDialog(null, "Insufficient balance to apply changes.");
+    }
+}
+
+
+
+
+}   // End of DataSourceManager
+
+
+
+
+
+
+
+
+
+
+
+
  
 
