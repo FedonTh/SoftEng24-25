@@ -1,0 +1,47 @@
+DROP DATABASE IF EXISTS travel_booking_db;
+CREATE DATABASE travel_booking_db;
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL, -- Use a longer hash for real applications
+    customer_id INT UNIQUE, -- Foreign key to customers table
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+DROP TABLE IF EXISTS customers;
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone_number VARCHAR(20),
+    violation_count INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+///
+DROP TABLE IF EXISTS bookings;
+CREATE TABLE bookings (
+    booking_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL, -- Foreign key to users table
+    customer_id INT,    -- Foreign key to customers table (redundant but useful for direct link)
+    booking_date DATETIME NOT NULL,
+    vehicle_type VARCHAR(50) NOT NULL,
+    pickup_location VARCHAR(255) NOT NULL,
+    dropoff_location VARCHAR(255) NOT NULL,
+    original_cost DECIMAL(10, 2) NOT NULL,
+    payment_status ENUM('Pending', 'Paid', 'Refunded', 'Failed') DEFAULT 'Pending',
+    booking_status ENUM('Confirmed', 'Cancelled', 'Completed', 'Pending') DEFAULT 'Confirmed',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_booking_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_booking_customer FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+DROP TABLE IF EXISTS cancellations;
+CREATE TABLE cancellations (
+    cancellation_id INT PRIMARY KEY AUTO_INCREMENT,
+    booking_id INT NOT NULL, -- Foreign key to bookings table
+    cancellation_date DATETIME NOT NULL,
+    cancellation_reason VARCHAR(255),
+    refund_amount DECIMAL(10, 2) NOT NULL,
+    penalty_applied BOOLEAN DEFAULT FALSE,
+    CONSTRAINT fk_cancellation_booking FOREIGN KEY (booking_id) REFERENCES bookings(booking_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
