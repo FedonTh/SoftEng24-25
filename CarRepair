@@ -39,7 +39,7 @@ public class DamageManagerClass{
 
 	public boolean CarIsReady(string car_id){
 				
-		
+		// /
 		return CarOkFlag; 
 	}
 
@@ -48,24 +48,48 @@ public class DamageManagerClass{
 public class DamageInfoScreen{
 	private string car_id;
 	private int user_id;
+	private string damage_description;
+	private string repair_method; 
+	
+	private string specialized_service_location;
+	private string specialized_service_info;
+	private string specialized_service_reason;
 
 	public void display(){
   		//ui code
   	}
 
-	public GetDamageAndRepairInfo(){
-		
-	}
-
 	public void SpecializedRepair(){
+		System.out.println("Location of specialized service: ");
+		specialized_service_location = scanner.nextLine();
 
+		System.out.println("name of specialized service: ");
+		specialized_service_info = scanner.nextLine();
+
+		System.out.println("Why the car needs specialized service: ");
+		specialized_service_reason = scanner.nextLine();
+	
 	}
+
+	public GetDamageAndRepairInfo(){
+		System.out.println("Damage: ");
+		damage_description = scanner.nextLine();
+
+		System.out.println("Repair plans: ");
+		repair_method = scanner.nextLine();
+	
+		if(repair_method.contains("specialized service")){
+			SpecializedRepair();
+		}
+	}
+	
 	public void ReportUpdates(string update){
 
 
 	}
 
 	public void ShowCustomer(int user_id){
+		
 
 	}
 	
@@ -79,11 +103,6 @@ public class DamageInfoScreen{
 
 public class RepairCompleteClass{
 	private string car_id;
-
-	public boolean repair_complete_flag = 0;
-
-	
-
 
 
 }
