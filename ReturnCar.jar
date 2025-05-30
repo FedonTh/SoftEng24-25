@@ -1,7 +1,7 @@
 public class ReturnScreen {
   private int id;
   private int days_left;
-
+  
   public void showReturn() {
     //display ui alert
     
@@ -21,7 +21,21 @@ public class ManageReturn {
   private boolean confirm;
   private String date_info;
   private int availability;
+  private int contract_id;
+  
+  private ReturnScreen returnS;
+  private DataSourceManager DSM;
 
+  public ManageScreen(ReturnScreen returnS){
+    this.returnS = returnS;
+    this.DSM = new DataSourceManager();
+  }
+  private CheckDate(int contract_id){
+    date = DSM.queryReturnDate(contract_id);  
+    if(date > currentdate){
+      returnS.showReturn(date);
+    }
+  }
 }
 
 public class ReturnDateScreen {
