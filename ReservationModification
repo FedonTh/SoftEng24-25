@@ -298,11 +298,11 @@ ExternalPaymentScreen externalPayment = new ExternalPaymentScreen();
 
     public void show_message3(String message)
     {
- JOptionPane.showMessageDialog(null, "Error in Payment");
+ JOptionPane.showMessageDialog(null, "Error in Payment! Please try again or use another payment method!");
     }
 
 public void show_message4() {
-        JOptionPane.showMessageDialog(null, "New Cost is Less");
+        JOptionPane.showMessageDialog(null, "New Cost is Less. No further payment needed!");
     }
 
 
