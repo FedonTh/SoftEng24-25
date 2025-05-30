@@ -77,10 +77,12 @@ public class DamageInfoScreen{
 
 }
 
-public class RepairCompleteClass{γιατ
+public class RepairCompleteClass{
 	private string car_id;
 
-	public int 
+	public boolean repair_complete_flag = 0;
+
+	
 
 
 
