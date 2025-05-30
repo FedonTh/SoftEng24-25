@@ -140,6 +140,8 @@ public class EditBookingScreen {
 
 public class ManageSearch {
 
+ private List<String> submittedUsernames = new ArrayList<>();
+    private List<String> submittedPasswords = new ArrayList<>();
 
  private List<String> bookings = new ArrayList<>();
     private String proposedPickupDate;
@@ -197,6 +199,12 @@ public class ManageSearch {
 
 public void send_results()
       {
+
+ public void send_results(String newUsername, String newPassword) {
+        
+        submittedUsernames.add(newUsername);  // Store the submitted Username!
+        submittedPasswords.add(newPassword);  // Store the submitted Password!
+}
       }
 
  
@@ -208,7 +216,7 @@ Public class ConfirmScreen{
 
       public void display()
       {
- frame = new JFrame("Confirmation Screen");
+ frame = new JFrame("Confirm Screen");
 
         JLabel label = new JLabel("Are you sure you want to confirm?");
         JButton submitButton = new JButton("Submit"); // <-- The Submit button
@@ -242,47 +250,132 @@ System.out.println("Submitting booking...");
     }  
 
 
-} // End of Confirmation Screen
+} // End of Confirm Screen
 
 
 public class PaymentScreen{
 
+
+private int amount;
+private string customer;
+
        public void display()
     {
+frame = new JFrame("Payment Screen");
+
+        
+        JButton payButton = new JButton("Pay");
+
+         payButton.addActionListener(e -> payment());
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(payButton);
+
+        frame.add(panel);
+        frame.setSize(300, 150);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
 
      public double return_cost()
      {
+
+   return amount;
+
      }
 
     public void payment()
     {
+ExternalPaymentScreen externalPayment = new ExternalPaymentScreen();
+    externalPayment.display(); // open External Paymennt Screen
+
+    // Optionally close the current payment screen
+    frame.dispose();
+
     }
 
-    public void close message()
+    public void show_message3(String message)
     {
+ JOptionPane.showMessageDialog(null, "Error in Payment");
     }
 
-    public void show_message(String message)
-    {
+public void show_message4() {
+        JOptionPane.showMessageDialog(null, "New Cost is Less");
     }
-  
+
+
+ public void close message()
+    {
+ JFrame closeFrame = new JFrame("Close Message");
+        JButton closeButton = new JButton("Close");
+
+        closeButton.addActionListener(e -> closeFrame.dispose());
+
+        JPanel panel = new JPanel();
+        panel.add(new JLabel("Press to close message"));
+        panel.add(closeButton);
+
+        closeFrame.add(panel);
+        closeFrame.setSize(250, 100);
+        closeFrame.setLocationRelativeTo(null);
+        closeFrame.setVisible(true);
+        closeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+    }
 
  
 } // end of PaymentScreen
 
 public class Invalid Booking Screen {
 
+ 
+
      public void display()
     {
+ private JFrame frame;
+
+    public void display() {
+        frame = new JFrame("Invalid Booking Screen");
+        JLabel label = new JLabel("Invalid booking details.");
+        JButton closeButton = new JButton("Close");
+
+        closeButton.addActionListener(e -> frame.dispose());
+
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(closeButton);
+
+        frame.add(panel);
+        frame.setSize(300, 100);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+ 
     }
 
      public void show_message(String message)
      {
+ JOptionPane.showMessageDialog(null, "Changes not Available!");
      }
 
     public void close_message()
    {
+ JFrame closeFrame = new JFrame("Close Message");
+        JButton closeButton = new JButton("Close");
+
+        closeButton.addActionListener(e -> closeFrame.dispose());
+
+        JPanel panel = new JPanel();
+        panel.add(new JLabel("Press to close this message"));
+        panel.add(closeButton);
+
+        closeFrame.add(panel);
+        closeFrame.setSize(250, 100);
+        closeFrame.setLocationRelativeTo(null);
+        closeFrame.setVisible(true);
+        closeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
    }
 
 
@@ -292,10 +385,30 @@ public class ExternalPaymentScreen{
 
       public void display()
      {
+frame = new JFrame("External Payment Screen");
+
+        JLabel label = new JLabel("Proceed with Payment!");
+        JButton confirmButton = new JButton("Confirm");
+
+        // When user clicks "Confirm", complete the payment
+        confirmButton.addActionListener(e -> confirm());
+
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(confirmButton);
+
+        frame.add(panel);
+        frame.setSize(300, 120);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
      }
 
       public void confirm()
     {
+ JOptionPane.showMessageDialog(frame, "Payment completed successfully!");
+        frame.dispose();
     }
 
 } //end of ExternalPaymentScreen
